@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Hamed - Portfolio</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons (more reliable than Lucide) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold gradient-text">Omar Hamed</h1>
+                <div class="flex gap-6">
+                    <a href="mailto:oh747421@gmail.com" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/omarhamed888" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 pt-24 pb-12">
+        <!-- About Section -->
+        <div class="card p-8 mb-12">
+            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                <!-- Profile Picture -->
+                <div class="w-48 h-48 flex-shrink-0">
+                    <img
+                        src="me.jpg"
+                        alt="Omar Hamed"
+                        class="profile-image w-full h-full object-cover"
+                    />
+                </div>
+                
+                <!-- About Content -->
+                <div class="flex-grow">
+                    <h2 class="text-3xl font-bold mb-4 gradient-text">About Me</h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Machine Learning Engineer & Data Scientist pursuing a Bachelor's in Artificial Intelligence 
+                        at the University of Menoufia. Passionate about transforming data into meaningful insights 
+                        and building intelligent solutions that make a difference.
+                    </p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Skills</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag bg-blue-100 text-blue-800">Python</span>
+                            <span class="skill-tag bg-purple-100 text-purple-800">SQL</span>
+                            <span class="skill-tag bg-blue-100 text-blue-800">Pandas</span>
+                            <span class="skill-tag bg-purple-100 text-purple-800">NumPy</span>
+                            <span class="skill-tag bg-blue-100 text-blue-800">Scikit-learn</span>
+                            <span class="skill-tag bg-purple-100 text-purple-800">Matplotlib</span>
+                            <span class="skill-tag bg-blue-100 text-blue-800">Power BI</span>
+                            <span class="skill-tag bg-purple-100 text-purple-800">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-8 gradient-text">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="card overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Electric Cars Analysis</h3>
+                        <p class="text-gray-600 mb-6">
+                            Analysis of electric car data using Python, featuring data visualization 
+                            and statistical analysis using Pandas, NumPy, and Matplotlib.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-tag bg-gray-100 text-gray-800">Pandas</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">NumPy</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Matplotlib</span>
+                        </div>
+                        <a href="https://github.com/omarhamed888/electric-cars-project" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Data Processing and Machine Learning GUI</h3>
+                        <p class="text-gray-600 mb-6">
+                            A GUI application for data processing and machine learning using Tkinter. 
+                            Implements OOP structure with Pandas, Scikit-learn, and NumPy integration.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-tag bg-gray-100 text-gray-800">Tkinter</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Pandas</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Scikit-learn</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">NumPy</span>
+                        </div>
+                        <a href="https://github.com/omarhamed888/2ndYearMLproject" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="card overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">HR Analysis</h3>
+                        <p class="text-gray-600 mb-6">
+                            deep insights into employee attrition and promotion trends.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <img src="HR1.jpg" alt="Project screenshot 1" 
+                                class="rounded-lg w-full h-full object-cover">
+                            <img src="HR2.jpg" alt="Project screenshot 2" 
+                                class="rounded-lg w-full h-full object-cover">
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-tag bg-gray-100 text-gray-800">Power Bi</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">visualization</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_hranalytics-datavisualization-powerbi-activity-7233809646593949696-cY6L?utm_source=share&utm_medium=member_desktop" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                            <i class="fab fa-linkedin"></i>
+                            View on LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="card overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Interactive Sales Dashboard</h3>
+                        <p class="text-gray-600 mb-6">
+                            provides insights into total profit, costs, and units sold, with breakdowns by category, ship mode, and geography.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <img src="sales11.jpg" alt="Project screenshot 1" 
+                                class="rounded-lg w-full h-full object-cover">
+                            <img src="sales12.jpg" alt="Project screenshot 2" 
+                                class="rounded-lg w-full h-full object-cover">
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-tag bg-gray-100 text-gray-800">Power Bi</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">visualization</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-KGxR?utm_source=share&utm_medium=member_desktop" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                            <i class="fab fa-linkedin"></i>
+                            View on LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                
+                <!-- Project 5 -->
+                <div class="card overflow-hidden">
+                    <div class="p-12"> <!-- Increased padding from 6 to 12 to make the container bigger -->
+                        <h3 class="text-3xl font-semibold text-gray-800 mb-4">More Dashboards</h3> <!-- Increased heading size -->
+                        <!-- Grid to display 4 photos instead of 2 -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"> <!-- Changed to 4 columns on larger screens -->
+                            <img src="m1.jpg" alt="Project screenshot 1" 
+                                class="rounded-lg w-full h-full object-cover">
+                            <img src="m2.jpg" alt="Project screenshot 2" 
+                                class="rounded-lg w-full h-full object-cover">
+                            <img src="m3.jpg" alt="Project screenshot 3" 
+                                class="rounded-lg w-full h-full object-cover">
+                            <img src="m4.jpeg" alt="Project screenshot 4" 
+                                class="rounded-lg w-full h-full object-cover">
+                        </div>
+                        <!-- Skill tags -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="skill-tag bg-gray-100 text-gray-800">Power Bi</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Exel</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Visualization</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
