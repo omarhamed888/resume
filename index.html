@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +12,20 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons (more reliable than Lucide) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             background: #f8f9fa;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         .gradient-text {
@@ -33,11 +39,12 @@
             background: white;
             border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .profile-image {
@@ -52,11 +59,71 @@
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: 500;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
             transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .project-image {
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -64,18 +131,23 @@
     <!-- Navigation -->
     <nav class="fixed w-full bg-white shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold gradient-text">Omar Hamed</h1>
-                <div class="flex gap-6">
-                    <a href="mailto:oh747421@gmail.com" class="text-gray-600 hover:text-blue-600">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://github.com/omarhamed888" class="text-gray-600 hover:text-blue-600">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" class="text-gray-600 hover:text-blue-600">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-2xl font-bold gradient-text mb-4 md:mb-0">Omar Hamed</h1>
+                <div class="flex items-center gap-6">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">About</a>
+                    <a href="#certifications" class="nav-link text-gray-600 hover:text-blue-600">Certifications</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">Projects</a>
+                    <div class="flex gap-4">
+                        <a href="mailto:oh747421@gmail.com" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://github.com/omarhamed888" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,63 +156,195 @@
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 pt-24 pb-12">
         <!-- About Section -->
-        <div class="card p-8 mb-12">
-            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                <!-- Profile Picture -->
-                <div class="w-48 h-48 flex-shrink-0">
-                    <img
-                        src="me.jpg"
-                        alt="Omar Hamed"
-                        class="profile-image w-full h-full object-cover"
-                    />
-                </div>
-                
-                <!-- About Content -->
-                <div class="flex-grow">
-                    <h2 class="text-3xl font-bold mb-4 gradient-text">About Me</h2>
-                    <p class="text-gray-600 mb-6 text-lg">
-                        Machine Learning Engineer & Data Scientist pursuing a Bachelor's in Artificial Intelligence 
-                        at the University of Menoufia. Passionate about transforming data into meaningful insights 
-                        and building intelligent solutions that make a difference.
-                    </p>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Skills</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag bg-blue-100 text-blue-800">Python</span>
-                            <span class="skill-tag bg-purple-100 text-purple-800">SQL</span>
-                            <span class="skill-tag bg-blue-100 text-blue-800">Pandas</span>
-                            <span class="skill-tag bg-purple-100 text-purple-800">NumPy</span>
-                            <span class="skill-tag bg-blue-100 text-blue-800">Scikit-learn</span>
-                            <span class="skill-tag bg-purple-100 text-purple-800">Matplotlib</span>
-                            <span class="skill-tag bg-blue-100 text-blue-800">Power BI</span>
-                            <span class="skill-tag bg-purple-100 text-purple-800">Tableau</span>
+        <section id="about" class="mb-16">
+            <div class="card p-8" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                    <!-- Profile Picture -->
+                    <div class="w-48 h-48 flex-shrink-0" data-aos="fade-right" data-aos-delay="200">
+                        <img
+                            src="me.jpg"
+                            alt="Omar Hamed"
+                            class="profile-image w-full h-full object-cover"
+                        />
+                    </div>
+                    
+                    <!-- About Content -->
+                    <div class="flex-grow" data-aos="fade-left" data-aos-delay="400">
+                        <h2 class="text-3xl font-bold mb-4 gradient-text">About Me</h2>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            Data Analyst & Data Scientist pursuing a Bachelor's in Artificial Intelligence 
+                            at the University of Menoufia. Passionate about transforming data into meaningful insights 
+                            and building intelligent solutions that make a difference.
+                        </p>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Skills</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-tag bg-blue-100 text-blue-800">Python</span>
+                                <span class="skill-tag bg-purple-100 text-purple-800">SQL</span>
+                                <span class="skill-tag bg-blue-100 text-blue-800">Pandas</span>
+                                <span class="skill-tag bg-purple-100 text-purple-800">NumPy</span>
+                                <span class="skill-tag bg-blue-100 text-blue-800">Scikit-learn</span>
+                                <span class="skill-tag bg-purple-100 text-purple-800">Matplotlib</span>
+                                <span class="skill-tag bg-blue-100 text-blue-800">Power BI</span>
+                                <span class="skill-tag bg-purple-100 text-purple-800">Tableau</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 gradient-text" data-aos="fade-up">Certifications</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Certification Card 1 -->
+                <div class="card p-6" data-aos="fade-up">
+                    <div class="flex flex-col h-full">
+                        <div class="mb-4">
+                            <!-- Image Section with Gradient Background -->
+                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
+                                <img src="python_for_everybody.png" 
+                                     alt="Python for Everybody Specialization Certificate from University of Michigan"
+                                     class="w-full h-48 object-contain mx-auto"
+                                     loading="lazy">
+                            </div>
+        
+                            <!-- Certification Details -->
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
+                                Python Programming Professional Certificate
+                            </h3>
+                            <div class="text-center mb-3">
+                                <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
+                                    <i class="fas fa-university"></i>
+                                    <span class="font-medium">University of Michigan</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Issued: Jul 2024</span>
+                                    <span class="mx-1">•</span>
+                                    <i class="fas fa-infinity"></i>
+                                    <span>Lifetime Validity</span>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Skill Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4 justify-center">
+                            <span class="skill-tag bg-blue-100 text-blue-800">
+                                <i class="fab fa-python mr-2"></i>Python Programming
+                            </span>
+                            <span class="skill-tag bg-purple-100 text-purple-800">
+                                <i class="fas fa-database mr-2"></i>Data Structures
+                            </span>
+                            <span class="skill-tag bg-blue-100 text-blue-800">
+                                <i class="fas fa-cloud mr-2"></i>Web Scraping
+                            </span>
+                        </div>
+        
+                        <!-- Verification Link -->
+                        <a href="https://coursera.org/share/1b084d69556f3f4ac0d74d5590cc5c35" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 mt-auto"
+                           aria-label="Verify Python Certification on Coursera">
+                            <i class="fas fa-external-link-alt"></i>
+                            Verify Certificate
+                            <span class="text-xs text-gray-500 ml-2">(Coursera)</span>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Add more certification cards here -->
+                <div class="card p-6" data-aos="fade-up">
+                    <div class="flex flex-col h-full">
+                        <div class="mb-4">
+                            <!-- Image Container -->
+                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
+                                <img src="nti_data_analisis.png" 
+                                     alt="Digital Egypt Youth Program Certificate in Data Analysis" 
+                                     class="w-full h-48 object-contain mx-auto"
+                                     loading="lazy">
+                            </div>
+                
+                            <!-- Certification Details -->
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
+                                Data Analysis: Skills for the Freelance Professional
+                            </h3>
+                            <div class="text-center mb-3">
+                                <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
+                                    <i class="fas fa-university"></i>
+                                    <span class="font-medium">Ministry of Communications & IT</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Digital Egypt Youth Program</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-2">
+                                    <i class="fas fa-calendar-day"></i>
+                                    <span>17 Jul 2024 - 16 Sep 2024</span>
+                                </div>
+                            </div>
+                
+                            <!-- Performance Details -->
+                            <div class="grid grid-cols-2 gap-4 mt-4 text-center">
+                                <div class="bg-blue-50 p-3 rounded-lg">
+                                    <p class="text-sm font-semibold text-blue-800">Technical Hours</p>
+                                    <p class="text-xl font-bold text-gray-800">90</p>
+                                </div>
+                                <div class="bg-purple-50 p-3 rounded-lg">
+                                    <p class="text-sm font-semibold text-purple-800">Freelancing Hours</p>
+                                    <p class="text-xl font-bold text-gray-800">30</p>
+                                </div>
+                                <div class="col-span-2 bg-green-50 p-3 rounded-lg">
+                                    <p class="text-sm font-semibold text-green-800">Final Score</p>
+                                    <p class="text-2xl font-bold text-gray-800">100%</p>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Verification Section -->
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="flex flex-wrap justify-between items-center">
+                                <div class="text-sm text-gray-500">
+                                    <i class="fas fa-id-card"></i>
+                                    Student ID: 108353
+                                </div>
+                                <a href="#your-certificate-url-here" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+                                   aria-label="Verify Digital Egypt Certification">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Verify Certificate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Projects Section -->
-        <section>
-            <h2 class="text-3xl font-bold mb-8 gradient-text">Featured Projects</h2>
+        <section id="projects">
+            <h2 class="text-3xl font-bold mb-8 gradient-text" data-aos="fade-up">Featured Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
-                <div class="card overflow-hidden">
+                <div class="card overflow-hidden" data-aos="fade-up">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold text-gray-800 mb-2">Electric Cars Analysis</h3>
                         <p class="text-gray-600 mb-6">
                             Analysis of electric car data using Python, featuring data visualization 
                             and statistical analysis using Pandas, NumPy, and Matplotlib.
                         </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                        </div>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="skill-tag bg-gray-100 text-gray-800">Pandas</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">NumPy</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">Matplotlib</span>
                         </div>
-                        <a href="https://github.com/omarhamed888/electric-cars-project" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                        <a href="https://github.com/omarhamed888/electric-cars-project" 
+                           class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300">
                             <i class="fab fa-github"></i>
                             View on GitHub
                         </a>
@@ -148,16 +352,13 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="card overflow-hidden">
+                <div class="card overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold text-gray-800 mb-2">Data Processing and Machine Learning GUI</h3>
                         <p class="text-gray-600 mb-6">
                             A GUI application for data processing and machine learning using Tkinter. 
                             Implements OOP structure with Pandas, Scikit-learn, and NumPy integration.
                         </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-
-                        </div>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="skill-tag bg-gray-100 text-gray-800">Tkinter</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">Pandas</span>
@@ -165,93 +366,222 @@
                             <span class="skill-tag bg-gray-100 text-gray-800">Scikit-learn</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">NumPy</span>
                         </div>
-                        <a href="https://github.com/omarhamed888/2ndYearMLproject" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                        <a href="https://github.com/omarhamed888/2ndYearMLproject" 
+                           class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300">
                             <i class="fab fa-github"></i>
                             View on GitHub
                         </a>
                     </div>
                 </div>
-                <!-- Project 3 -->
-                <div class="card overflow-hidden">
+
+                <!-- Project 3 - Wide Version -->
+                <div class="card overflow-hidden md:col-span-2" data-aos="fade-up">
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">HR Analysis</h3>
-                        <p class="text-gray-600 mb-6">
-                            deep insights into employee attrition and promotion trends.
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">HR Analytics Dashboard</h3>
+                        <p class="text-gray-600 mb-4">
+                            Comprehensive analysis of employee attrition, promotion trends, and workforce demographics 
+                            with interactive Power BI visualizations.
                         </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <img src="HR1.jpg" alt="Project screenshot 1" 
-                                class="rounded-lg w-full h-full object-cover">
-                            <img src="HR2.jpg" alt="Project screenshot 2" 
-                                class="rounded-lg w-full h-full object-cover">
+                        
+                        <!-- Expanded Image Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <img src="HR1.jpg" alt="Employee Attrition Analysis" 
+                            class="rounded-lg w-full h-73 aspect-video object-cover">
+                            <img src="HR2.jpg" alt="Promotion Trends Visualization" 
+                            class="rounded-lg w-full h-73 aspect-video object-cover">
                         </div>
+
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Power Bi</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">visualization</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">HR Analytics</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Modeling</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Dashboard Design</span>
                         </div>
-                        <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_hranalytics-datavisualization-powerbi-activity-7233809646593949696-cY6L?utm_source=share&utm_medium=member_desktop" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+
+                        <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_hranalytics-datavisualization-powerbi-activity-7233809646593949696-cY6L" 
+                        class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+                        target="_blank" 
+                        rel="noopener">
                             <i class="fab fa-linkedin"></i>
                             View on LinkedIn
                         </a>
                     </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="card overflow-hidden">
+                </div><!-- Project 4 - Updated -->
+                <div class="card overflow-hidden md:col-span-2" data-aos="fade-up">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold text-gray-800 mb-2">Interactive Sales Dashboard</h3>
-                        <p class="text-gray-600 mb-6">
-                            provides insights into total profit, costs, and units sold, with breakdowns by category, ship mode, and geography.
+                        <p class="text-gray-600 mb-4">
+                            Provides insights into total profit, costs, and units sold, with breakdowns by category, 
+                            ship mode, and geography using advanced Power BI visualizations.
                         </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <img src="sales11.jpg" alt="Project screenshot 1" 
-                                class="rounded-lg w-full h-full object-cover">
-                            <img src="sales12.jpg" alt="Project screenshot 2" 
-                                class="rounded-lg w-full h-full object-cover">
+                        
+                        <!-- Image Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <img src="sales11.jpg" alt="Sales Overview Dashboard" 
+                                class="rounded-lg w-full h-73 aspect-video object-cover">
+                            <img src="sales12.jpg" alt="Geographical Sales Breakdown" 
+                                class="rounded-lg w-full h-73 aspect-video object-cover">
                         </div>
+                
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Power Bi</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
                             <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">visualization</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Data Modeling</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">Sales Analytics</span>
+                            <span class="skill-tag bg-gray-100 text-gray-800">KPI Tracking</span>
                         </div>
-                        <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-KGxR?utm_source=share&utm_medium=member_desktop" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+                
+                        <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-KGxR" 
+                           class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+                           target="_blank" 
+                           rel="noopener">
                             <i class="fab fa-linkedin"></i>
                             View on LinkedIn
                         </a>
                     </div>
                 </div>
-
+             <!-- HR Dashboard Project -->
+        <div class="card overflow-hidden" data-aos="fade-up">
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-2">HR Analytics Dashboard</h3>
+                <p class="text-gray-600 mb-6">
+                    Comprehensive HR metrics analysis featuring gender distribution, turnover rates, 
+                    promotion trends, and regional workforce breakdowns using Power BI.
+                </p>
                 
-                <!-- Project 5 -->
-                <div class="card overflow-hidden">
-                    <div class="p-12"> <!-- Increased padding from 6 to 12 to make the container bigger -->
-                        <h3 class="text-3xl font-semibold text-gray-800 mb-4">More Dashboards</h3> <!-- Increased heading size -->
-                        <!-- Grid to display 4 photos instead of 2 -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"> <!-- Changed to 4 columns on larger screens -->
-                            <img src="m1.jpg" alt="Project screenshot 1" 
-                                class="rounded-lg w-full h-full object-cover">
-                            <img src="m2.jpg" alt="Project screenshot 2" 
-                                class="rounded-lg w-full h-full object-cover">
-                            <img src="m3.jpg" alt="Project screenshot 3" 
-                                class="rounded-lg w-full h-full object-cover">
-                            <img src="m4.jpeg" alt="Project screenshot 4" 
-                                class="rounded-lg w-full h-full object-cover">
-                        </div>
-                        <!-- Skill tags -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Power Bi</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Exel</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Visualization</span>
-                        </div>
-                    </div>
+                <div class="grid grid-cols-1 gap-4 mb-6">
+                    <img src="m4.jpeg" alt="HR Dashboard - Gender Distribution" 
+                        class="rounded-lg w-full h-full object-cover project-image">
                 </div>
 
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
+                    <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
+                    <span class="skill-tag bg-gray-100 text-gray-800">Data Visualization</span>
+                    <span class="skill-tag bg-gray-100 text-gray-800">HR Analytics</span>
+                </div>
 
+                <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_powerbi-datavisualization-analytics-activity-7240636829274656768-lyec?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
+                class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+                target="_blank" 
+                rel="noopener">
+                    <i class="fab fa-linkedin"></i>
+                    View on LinkedIn
+                </a>
             </div>
-        </section>
-    </main>
+        </div>
+        <!-- Churn Analysis Dashboard Project -->
+            <div class="card overflow-hidden" data-aos="fade-up">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Customer Churn Analysis Dashboard</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive customer churn analysis dashboard tracking risk metrics, 
+                        demographic distributions, and financial trends using Power BI.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 gap-4 mb-6">
+                        <img src="m1.jpg" alt="Churn Dashboard - Key Metrics Overview" 
+                            class="rounded-lg w-full h-full object-cover project-image">
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">Customer Analytics</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">Data Visualization</span>
+                    </div>
+
+                    <a href="https://www.linkedin.com/posts/omar-hamed-020b28251_powerbi-datavisualization-analytics-activity-7240636829274656768-lyec?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
+                    class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+                    target="_blank" 
+                    rel="noopener">
+                        <i class="fab fa-linkedin"></i>
+                        View on LinkedIn
+                    </a>
+                </div>
+            </div>
+            <!-- E-Commerce Dashboard Project (Single Image) -->
+            <div class="card overflow-hidden" data-aos="fade-up">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">E-Commerce Sales Dashboard</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive sales analytics dashboard tracking $227K+ in profits, customer segmentation, 
+                        and regional performance across product categories using Power BI.
+                    </p>
+                    
+                    <!-- Single Image Display -->
+                    <div class="grid grid-cols-1 gap-4 mb-6">
+                        <img src="m2.jpg" 
+                            alt="E-Commerce Dashboard showing sales metrics, customer segments, and regional performance" 
+                            class="rounded-lg w-full h-full object-cover project-image">
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="skill-tag bg-gray-100 text-gray-800">Excel</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">Sales Analytics</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">Customer Segmentation</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800">Data Modeling</span>
+                    </div>
+
+                    <a href="YOUR_LINKEDIN_POST_URL_HERE" 
+                    class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+                    target="_blank" 
+                    rel="noopener">
+                        <i class="fab fa-linkedin"></i>
+                        View on LinkedIn
+                    </a>
+                </div>
+            </div>
+         </div>
+     </section>
+ </main>
+
+ <!-- Scroll to Top Button -->
+ <div id="scrollToTop" class="scroll-to-top">
+     <i class="fas fa-arrow-up"></i>
+ </div>
+
+ <!-- Initialize AOS -->
+ <script>
+     AOS.init({
+         duration: 800,
+         offset: 100,
+         once: true
+     });
+
+     // Scroll to Top Functionality
+     const scrollToTop = document.getElementById('scrollToTop');
+     
+     window.addEventListener('scroll', () => {
+         if (window.scrollY > 300) {
+             scrollToTop.classList.add('visible');
+         } else {
+             scrollToTop.classList.remove('visible');
+         }
+     });
+
+     scrollToTop.addEventListener('click', () => {
+         window.scrollTo({
+             top: 0,
+             behavior: 'smooth'
+         });
+     });
+
+     // Smooth scroll for navigation links
+     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+         anchor.addEventListener('click', function (e) {
+             e.preventDefault();
+             const target = document.querySelector(this.getAttribute('href'));
+             if (target) {
+                 target.scrollIntoView({
+                     behavior: 'smooth',
+                     block: 'start'
+                 });
+             }
+         });
+     });
+ </script>
 </body>
 </html>
