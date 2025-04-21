@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,20 +52,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .skill-tag {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            transform: scale(1.05);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
         .nav-link {
             position: relative;
             padding: 0.5rem 1rem;
@@ -87,14 +72,6 @@
 
         .nav-link:hover::after {
             width: 100%;
-        }
-
-        .project-image {
-            transition: transform 0.3s ease;
-        }
-
-        .project-image:hover {
-            transform: scale(1.05);
         }
 
         .scroll-to-top {
@@ -129,43 +106,55 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <h1 class="text-2xl font-bold gradient-text mb-4 md:mb-0">Omar Hamed</h1>
-                <div class="flex items-center gap-6">
+    <!-- Navigation -->
+<nav class="fixed w-full bg-white shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text mb-4 md:mb-0">Omar Hamed</h1>
+            <div class="flex items-center gap-6">
+                <!-- Hamburger Menu for Mobile -->
+                <button id="menuToggle" class="md:hidden text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Desktop and Mobile View -->
+                <div id="menu" class="hidden md:flex gap-6">
                     <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">About</a>
-                    <a href="#certifications" class="nav-link text-gray-600 hover:text-blue-600">Certifications</a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">Projects</a>
-                    <a href="https://drive.google.com/file/d/1NvEvuyPimJYbGShB48oeZfmQiAbXxoMk/view?usp=sharing" 
-                    target="_blank" 
-                    class="text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text rounded-lg py-3 px-6 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    
+                    <!-- CV and LinkedIn links (always visible on mobile) -->
+                    <a href="https://drive.google.com/file/d/1NvEvuyPimJYbGShB48oeZfmQiAbXxoMk/view?usp=sharing" target="_blank" class="text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text rounded-lg py-3 px-6 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
                         <i class="fas fa-file-alt text-xl"></i>
                         <span class="text-lg">CV</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" 
-                    target="_blank" 
-                    class="text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text rounded-lg py-3 px-6 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text rounded-lg py-3 px-6 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
                         <i class="fab fa-linkedin text-xl"></i>
                         <span class="text-lg">LinkedIn</span>
                     </a>
+                </div>
 
-                    <div class="flex gap-4">
-                        <a href="https://wa.me/201017045285" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                        <a href="mailto:omar.hamed2410@gmail.com" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                        <a href="https://github.com/omarhamed888" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        
-                    </div>
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="md:hidden fixed top-0 left-0 right-0 bg-white z-40 p-6 shadow-md hidden">
+                    <ul>
+                        <li><a href="#about" class="block text-gray-600 hover:text-blue-600 mb-4">About</a></li>
+                        <li><a href="https://drive.google.com/file/d/1NvEvuyPimJYbGShB48oeZfmQiAbXxoMk/view?usp=sharing" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">CV</a></li>
+                        <li><a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">LinkedIn</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
+
+
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden fixed top-0 left-0 right-0 bg-white z-40 p-6 shadow-md hidden">
+        <ul>
+            <li><a href="#about" class="block text-gray-600 hover:text-blue-600 mb-4">About</a></li>
+            <li><a href="https://drive.google.com/file/d/1NvEvuyPimJYbGShB48oeZfmQiAbXxoMk/view?usp=sharing" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">CV</a></li>
+            <li><a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">LinkedIn</a></li>
+        </ul>
+    </div>
 
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 pt-24 pb-12">
@@ -190,30 +179,11 @@
                             at the University of Menoufia. Passionate about transforming data into meaningful insights 
                             and building intelligent solutions that make a difference.
                         </p>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-4">Skills</h3>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="skill-tag bg-blue-100 text-blue-800">Python</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">SQL</span>
-                                <span class="skill-tag bg-blue-100 text-blue-800">Pandas</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">NumPy</span>
-                                <span class="skill-tag bg-blue-100 text-blue-800">Scikit-learn</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">Matplotlib</span>
-                                <span class="skill-tag bg-blue-100 text-blue-800">Power BI</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">Tableau</span>
-                                <span class="skill-tag bg-blue-100 text-blue-800">Excel</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">Data Visualization</span>
-                                <span class="skill-tag bg-blue-100 text-blue-800">Machine Learning</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">Deep Learning</span>
-                                <span class="skill-tag bg-blue-100 text-blue-800">Data Analysis</span>
-                                <span class="skill-tag bg-purple-100 text-purple-800">Data Mining</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <!-- Certifications Section -->
         <section id="certifications" class="mb-16">
             <h2 class="text-3xl font-bold mb-8 gradient-text" data-aos="fade-up">Certifications</h2>
@@ -670,52 +640,61 @@
             </div>
          </div>
      </section>
- </main>
+    </main>
 
- <!-- Scroll to Top Button -->
- <div id="scrollToTop" class="scroll-to-top">
-     <i class="fas fa-arrow-up"></i>
- </div>
+    <!-- Scroll to Top Button -->
+    <div id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
- <!-- Initialize AOS -->
- <script>
-     AOS.init({
-         duration: 800,
-         offset: 100,
-         once: true
-     });
 
-     // Scroll to Top Functionality
-     const scrollToTop = document.getElementById('scrollToTop');
-     
-     window.addEventListener('scroll', () => {
-         if (window.scrollY > 300) {
-             scrollToTop.classList.add('visible');
-         } else {
-             scrollToTop.classList.remove('visible');
-         }
-     });
 
-     scrollToTop.addEventListener('click', () => {
-         window.scrollTo({
-             top: 0,
-             behavior: 'smooth'
-         });
-     });
+    
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
 
-     // Smooth scroll for navigation links
-     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-         anchor.addEventListener('click', function (e) {
-             e.preventDefault();
-             const target = document.querySelector(this.getAttribute('href'));
-             if (target) {
-                 target.scrollIntoView({
-                     behavior: 'smooth',
-                     block: 'start'
-                 });
-             }
-         });
-     });
- </script>
+        // Scroll to Top Functionality
+        const scrollToTop = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTop.classList.add('visible');
+            } else {
+                scrollToTop.classList.remove('visible');
+            }
+        });
+
+        scrollToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Toggle Mobile Menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
