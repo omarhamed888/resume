@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,49 +29,99 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            background-size: 200% auto;
+            animation: gradientText 8s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .card {
             background: white;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(243, 244, 246, 0.8);
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(229, 231, 235, 0.5);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        img:not(.profile-image):hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .project-image {
+            transition: all 0.3s ease;
+            cursor: zoom-in;
         }
 
         .profile-image {
             border-radius: 50%;
             border: 4px solid white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
         .nav-link {
             position: relative;
             padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
         }
 
-        .nav-link::after {
+        .nav-link::before {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 0.5rem;
+            transition: width 0.3s ease;
+            z-index: -1;
         }
 
-        .nav-link:hover::after {
+        .nav-link:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::before {
             width: 100%;
         }
 
@@ -78,19 +129,21 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white;
-            width: 3rem;
-            height: 3rem;
+            width: 3.5rem;
+            height: 3.5rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             visibility: hidden;
             z-index: 1000;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .scroll-to-top.visible {
@@ -99,8 +152,9 @@
         }
 
         .scroll-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
         }
     </style>
 </head>
@@ -193,7 +247,8 @@
                     <div class="flex flex-col h-full">
                         <div class="mb-4">
                             <!-- Image Section with Gradient Background -->
-                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
+                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md hover:scale-[1.02] transform-gpu">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                                 <img src="photos/python_for_everybody.png" 
                                      alt="Python for Everybody Specialization Certificate from University of Michigan"
                                      class="w-full h-48 object-contain mx-auto"
@@ -309,7 +364,7 @@
                         <div class="mb-4">
                             <!-- Image Container -->
                             <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
-                                <img src="photos/nti_data_analisis.png" 
+                                <img src="photos\nti_data_analisis.png" 
                                      alt="Digital Egypt Youth Program Certificate in Data Analysis" 
                                      class="w-full h-48 object-contain mx-auto"
                                      loading="lazy">
@@ -609,8 +664,10 @@
                         
                         <!-- Expanded Image Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <img src="photos/HR1.jpg" alt="Employee Attrition Analysis" 
-                            class="rounded-lg w-full h-73 aspect-video object-cover">
+                            <img src="photos/HR1.jpg" 
+                            alt="HR Analytics Dashboard showing employee attrition trends" 
+                            class="rounded-lg w-full h-73 aspect-video object-cover hover:shadow-xl transition-all duration-300"
+                            loading="lazy">
                             <img src="photos/HR2.jpg" alt="Promotion Trends Visualization" 
                             class="rounded-lg w-full h-73 aspect-video object-cover">
                         </div>
@@ -846,8 +903,32 @@
 
 
     
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center hidden">
+        <div class="relative max-w-4xl w-full p-4">
+            <button id="closeLightbox" class="absolute top-4 right-4 text-white text-3xl z-50">&times;</button>
+            <img id="lightboxImage" src="" alt="" class="max-h-[90vh] mx-auto">
+        </div>
+    </div>
+
     <!-- Initialize AOS -->
     <script>
+        // Lightbox functionality
+        document.querySelectorAll('.project-image').forEach(img => {
+            img.addEventListener('click', () => {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightboxImage');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.getElementById('closeLightbox').addEventListener('click', () => {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.body.style.overflow = '';
+        });
         AOS.init({
             duration: 800,
             offset: 100,
