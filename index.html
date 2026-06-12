@@ -1,979 +1,812 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Hamed - Portfolio</title>
-    
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Omar Hamed Ali — AI Engineer & Data Scientist</title>
+<meta name="description" content="Omar Hamed Ali — AI Engineer and Data Scientist building real-world AI systems in computer vision, NLP/LLMs, and data analytics. Python, YOLOv8, RAG, Power BI." />
+<meta name="author" content="Omar Hamed Ali" />
+<meta name="theme-color" content="#3D5AF1" />
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Omar Hamed Ali — AI Engineer & Data Scientist" />
+<meta property="og:description" content="Building real-world AI systems across computer vision, NLP/LLMs, and data analytics." />
+<meta property="og:image" content="photos/me.jpg" />
 
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: gradientText 8s ease infinite;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-        @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+<style>
+/* ============================================================
+   DESIGN TOKENS — dual theme · LIGHT default + DARK toggle
+   "Detection": an AI engineer's instrument panel
+   Primary: royal blue. Neutrals: cool slate.
+   ============================================================ */
+:root{
+  /* LIGHT (default) */
+  --bg:#FAFBFF;
+  --bg-2:#F1F4FC;
+  --surface:#FFFFFF;
+  --surface-solid:#FFFFFF;
+  --surface-2:#F3F6FD;
+  --line:#E2E7F4;
+  --line-soft:#EDF0FA;
+  --text:#141826;
+  --text-2:#4C5470;
+  --muted:#8990A6;
+  --primary:#3D5AF1;
+  --primary-dim:#7C90F7;
+  --primary-strong:#2A43C7;
+  --on-primary:#FFFFFF;
+  --glow:rgba(61,90,241,.14);
+  --shadow:0 10px 30px -12px rgba(40,55,120,.18);
+  --shadow-lg:0 22px 50px -18px rgba(40,55,120,.28);
+  --grid-color:#E7EBF7;
+  --grid-op:.6;
 
-        .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(243, 244, 246, 0.8);
-            overflow: hidden;
-        }
+  --maxw:1180px;--r:14px;--ease:cubic-bezier(.4,0,.2,1);
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+[data-theme="dark"]{
+  --bg:#0B0E1A;
+  --bg-2:#0F1322;
+  --surface:#141927;
+  --surface-solid:#131829;
+  --surface-2:#1B2236;
+  --line:#27304A;
+  --line-soft:#1A2236;
+  --text:#ECEFF8;
+  --text-2:#A6AECB;
+  --muted:#6E7796;
+  --primary:#6E83F5;
+  --primary-dim:#4F6BED;
+  --primary-strong:#8FA1FF;
+  --on-primary:#0A0D18;
+  --glow:rgba(110,131,245,.22);
+  --shadow:0 12px 30px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 22px 50px -18px rgba(0,0,0,.7);
+  --grid-color:#161E33;
+  --grid-op:.5;
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: rgba(229, 231, 235, 0.5);
-        }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);background:var(--bg);color:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .4s var(--ease),color .4s var(--ease);
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+  background-size:48px 48px;opacity:var(--grid-op);
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--primary);color:#fff}
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.mono{font-family:var(--font-mono)}
 
-        .card:hover::before {
-            opacity: 1;
-        }
-        
-        img:not(.profile-image):hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-        
-        .project-image {
-            transition: all 0.3s ease;
-            cursor: zoom-in;
-        }
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);display:inline-flex;align-items:center;gap:.6ch}
+.eyebrow::before{content:"//";color:var(--primary-dim)}
 
-        .profile-image {
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.section{padding:96px 0;position:relative}
+.section-head{margin-bottom:48px}
+.section-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.02em;line-height:1.05;margin-top:14px}
+.section-sub{color:var(--text-2);max-width:62ch;margin-top:12px;font-size:1.02rem}
 
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.nav.scrolled{border-color:var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;font-size:1.05rem}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 0 var(--primary);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.brand small{color:var(--muted);font-family:var(--font-mono);font-weight:400;font-size:.7rem}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-family:var(--font-mono);font-size:.82rem;color:var(--text-2);padding:8px 14px;border-radius:8px;transition:color .25s,background .25s;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--primary)}
+.nav-links a.active::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:1px;background:var(--primary)}
+.nav-cta{margin-left:6px;font-family:var(--font-mono);font-size:.82rem;padding:9px 16px;border:1px solid var(--primary);color:var(--primary);border-radius:8px;transition:all .25s var(--ease)}
+.nav-cta:hover{background:var(--primary);color:var(--on-primary)}
+.theme-btn{margin-left:8px;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;font-size:.95rem;transition:all .25s var(--ease)}
+.theme-btn:hover{border-color:var(--primary);color:var(--primary)}
+.menu-btn{display:none;background:var(--surface);border:1px solid var(--line);color:var(--text);width:42px;height:42px;border-radius:10px;font-size:1.1rem;cursor:pointer;margin-left:8px}
 
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-        }
+.drawer{position:fixed;inset:0;z-index:60;background:var(--bg);transform:translateX(100%);transition:transform .4s var(--ease);display:flex;flex-direction:column;padding:24px}
+.drawer.open{transform:translateX(0)}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+.drawer a{font-family:var(--font-display);font-size:1.6rem;font-weight:600;padding:14px 0;border-bottom:1px solid var(--line-soft);color:var(--text-2)}
+.drawer a .ix{font-family:var(--font-mono);font-size:.8rem;color:var(--primary-dim);margin-right:14px}
 
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-            border-radius: 0.5rem;
-            transition: width 0.3s ease;
-            z-index: -1;
-        }
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:64px;align-items:center}
+.det-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.78rem;background:var(--surface-solid);border:1px solid var(--line);padding:7px 12px;border-radius:7px;color:var(--text-2);box-shadow:var(--shadow)}
+.det-label b{color:var(--primary);font-weight:600}
+.det-label .conf{color:var(--primary-dim)}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,7vw,5rem);line-height:.98;letter-spacing:-.03em;margin:22px 0 18px}
+.hero h1 .accent{color:var(--primary)}
+.hero-role{font-family:var(--font-mono);font-size:clamp(1rem,2.4vw,1.25rem);color:var(--text-2);margin-bottom:24px}
+.hero-role .sep{color:var(--primary-dim);margin:0 .5ch}
+.hero-desc{color:var(--text-2);font-size:1.08rem;max-width:54ch;margin-bottom:32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:42px}
+.btn{font-family:var(--font-mono);font-size:.88rem;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:9px;transition:all .25s var(--ease);cursor:pointer;border:1px solid transparent}
+.btn-primary{background:var(--primary);color:var(--on-primary);font-weight:600}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px var(--glow),var(--shadow)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+.metrics{display:flex;gap:34px;flex-wrap:wrap}
+.metric .n{font-family:var(--font-display);font-weight:700;font-size:1.9rem;color:var(--text);line-height:1}
+.metric .l{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
 
-        .nav-link:hover {
-            color: #3b82f6;
-            transform: translateY(-2px);
-        }
+.shot{position:relative;width:100%;max-width:340px;margin-left:auto;aspect-ratio:4/5}
+.shot img{width:100%;height:100%;object-fit:cover;border-radius:6px;box-shadow:var(--shadow-lg)}
+.shot .frame{position:absolute;inset:-10px;pointer-events:none}
+.shot .frame::before,.shot .frame::after{content:"";position:absolute;width:34px;height:34px;border:2px solid var(--primary)}
+.shot .frame::before{top:0;left:0;border-right:0;border-bottom:0}
+.shot .frame::after{bottom:0;right:0;border-left:0;border-top:0}
+.shot .corner-tr,.shot .corner-bl{position:absolute;width:34px;height:34px;border:2px solid var(--primary-dim)}
+.shot .corner-tr{top:-10px;right:-10px;border-left:0;border-bottom:0}
+.shot .corner-bl{bottom:-10px;left:-10px;border-right:0;border-top:0}
+.shot .tag{position:absolute;top:-10px;left:24px;transform:translateY(-100%);background:var(--primary);color:#fff;font-family:var(--font-mono);font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:5px 5px 0 0;white-space:nowrap}
+.shot .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);top:0;opacity:0;animation:scan 4.5s var(--ease) infinite}
+@keyframes scan{0%{top:0;opacity:0}10%{opacity:.9}90%{opacity:.9}100%{top:100%;opacity:0}}
 
-        .nav-link:hover::before {
-            width: 100%;
-        }
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px}
+.about-lead{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:500;line-height:1.4;letter-spacing:-.01em}
+.about-lead b{color:var(--primary);font-weight:600}
+.about-body{color:var(--text-2);margin-top:20px;font-size:1.02rem}
+.facts{border:1px solid var(--line);border-radius:var(--r);padding:6px 22px;background:var(--surface);box-shadow:var(--shadow)}
+.fact{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-soft);font-size:.92rem}
+.fact:last-child{border-bottom:0}
+.fact .k{font-family:var(--font-mono);color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.fact .v{color:var(--text);text-align:right;font-weight:500}
+.fact .v .hl{color:var(--primary)}
 
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
+/* EXPERIENCE */
+.timeline{position:relative;margin-left:8px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--primary),var(--line) 60%,transparent)}
+.tl-item{position:relative;padding-left:42px;padding-bottom:38px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:0;top:4px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--primary-dim)}
+.tl-item.now::before{border-color:var(--primary);box-shadow:0 0 0 4px var(--glow)}
+.tl-date{font-family:var(--font-mono);font-size:.74rem;color:var(--primary);letter-spacing:.04em}
+.tl-role{font-family:var(--font-display);font-size:1.22rem;font-weight:600;margin:6px 0 3px}
+.tl-org{color:var(--text-2);font-size:.95rem;margin-bottom:10px}
+.tl-org .loc{color:var(--muted);font-family:var(--font-mono);font-size:.78rem}
+.tl-pts{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tl-pts li{color:var(--text-2);font-size:.95rem;padding-left:18px;position:relative}
+.tl-pts li::before{content:"\203A";position:absolute;left:0;color:var(--primary);font-weight:700}
 
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
+/* PROJECTS */
+.proj-group-label{font-family:var(--font-mono);font-size:.8rem;color:var(--text-2);letter-spacing:.1em;text-transform:uppercase;margin:0 0 22px;display:flex;align-items:center;gap:14px}
+.proj-group-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.proj-group-label i{color:var(--primary)}
+.grid{display:grid;gap:22px}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.span-2{grid-column:span 2}
+.card{background:var(--surface-solid);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);position:relative;overflow:hidden;height:100%;box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:var(--shadow-lg)}
+.card-ico{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;background:var(--surface-2);color:var(--primary);border:1px solid var(--line);margin-bottom:16px}
+.card h3{font-family:var(--font-display);font-size:1.28rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.card p{color:var(--text-2);font-size:.94rem;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.tag{font-family:var(--font-mono);font-size:.72rem;color:var(--text-2);background:var(--surface-2);border:1px solid var(--line-soft);padding:4px 9px;border-radius:6px}
+.proj-link{font-family:var(--font-mono);font-size:.84rem;color:var(--primary);display:inline-flex;align-items:center;gap:8px;transition:gap .25s;font-weight:500}
+.proj-link:hover{gap:12px}
+.shots{display:grid;gap:14px;margin-bottom:18px}
+.shots.two{grid-template-columns:1fr 1fr}
+.imgbox{position:relative;border-radius:10px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line)}
+.imgbox img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .5s var(--ease)}
+.imgbox:hover img{transform:scale(1.05)}
+.imgbox::after{content:"\2922 inspect";position:absolute;left:10px;bottom:10px;font-family:var(--font-mono);font-size:.7rem;color:#fff;background:var(--primary);padding:3px 8px;border-radius:5px;opacity:0;transform:translateY(6px);transition:all .3s var(--ease)}
+.imgbox:hover::after{opacity:1;transform:translateY(0)}
 
-        .scroll-to-top:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.3);
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-        }
-    </style>
+/* CERTIFICATIONS */
+.cert{background:var(--surface-solid);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s;box-shadow:var(--shadow)}
+.cert:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cert-img{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:12px;margin-bottom:16px;cursor:zoom-in}
+.cert-img img{width:100%;height:150px;object-fit:contain}
+.cert h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;line-height:1.25;margin-bottom:10px}
+.cert-meta{font-size:.85rem;color:var(--text-2);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.cert-meta i{color:var(--primary);width:14px;text-align:center}
+.cert-meta .mono{color:var(--muted);font-size:.78rem}
+.cert-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.cert-stat{background:var(--surface-2);border-radius:8px;padding:8px;text-align:center}
+.cert-stat .n{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--primary)}
+.cert-stat .l{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.cert-stat.full{grid-column:span 2}
+.cert-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px}
+.cert .verify{margin-top:auto;font-family:var(--font-mono);font-size:.8rem;color:var(--primary);display:inline-flex;align-items:center;gap:8px;padding-top:12px;border-top:1px solid var(--line-soft);transition:gap .25s;font-weight:500}
+.cert .verify:hover{gap:12px}
+
+/* SKILLS */
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.skill-block{border:1px solid var(--line);border-radius:var(--r);padding:22px;background:var(--surface);box-shadow:var(--shadow)}
+.skill-block h4{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.86rem;padding:6px 12px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line-soft);color:var(--text);transition:all .2s}
+.chip:hover{border-color:var(--primary);color:var(--primary)}
+
+/* CONTACT */
+.contact-card{border:1px solid var(--line);border-radius:18px;padding:clamp(28px,5vw,56px);background:var(--surface);position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.contact-card::before{content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%)}
+.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;position:relative;z-index:1}
+.contact-h{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin-bottom:16px}
+.contact-h .accent{color:var(--primary)}
+.contact-p{color:var(--text-2);margin-bottom:26px}
+.channels{display:flex;flex-direction:column;gap:12px}
+.channel{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);transition:all .25s var(--ease)}
+.channel:hover{border-color:var(--primary);transform:translateX(4px)}
+.channel i{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;background:var(--surface-solid);color:var(--primary);font-size:1rem;flex-shrink:0;border:1px solid var(--line-soft)}
+.channel .ct{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.channel .cv{font-weight:500;color:var(--text);word-break:break-all}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.foot a:hover{color:var(--primary)}
+.foot-social{display:flex;gap:10px}
+.foot-social a{width:38px;height:38px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;color:var(--text-2);transition:all .25s;background:var(--surface)}
+.foot-social a:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
+
+.totop{position:fixed;right:22px;bottom:22px;z-index:40;width:46px;height:46px;border-radius:12px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-size:1rem;opacity:0;transform:translateY(14px);pointer-events:none;transition:all .3s var(--ease);box-shadow:var(--shadow-lg)}
+.totop.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(8,11,20,.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;border:1px solid var(--line)}
+.lightbox .x{position:absolute;top:20px;right:24px;font-size:2rem;color:#fff;cursor:pointer;font-family:var(--font-mono)}
+
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .menu-btn{display:grid;place-items:center}
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .shot{margin:0 auto;order:-1}
+  .cols-2{grid-template-columns:1fr}
+  .span-2{grid-column:auto}
+  .skill-grid{grid-template-columns:1fr}
+  .shots.two{grid-template-columns:1fr}
+  .section{padding:72px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  [data-reveal]{opacity:1;transform:none}
+}
+
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <!-- Navigation -->
-<nav class="fixed w-full bg-white shadow-sm z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <h1 class="text-2xl font-bold gradient-text mb-4 md:mb-0">Omar Hamed</h1>
-            <div class="flex items-center gap-6">
-                <!-- Hamburger Menu for Mobile -->
-                <button id="menuToggle" class="md:hidden text-gray-600 hover:text-blue-600">
-                    <i class="fas fa-bars"></i>
-                </button>
 
-                <!-- Desktop and Mobile View -->
-                <div id="menu" class="hidden md:flex gap-6">
-                    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">About</a>
-                    
-                    <!-- CV and LinkedIn links (always visible on mobile) -->
-                    <a href="https://flowcv.com/resume/dg1oh3degb91" target="_blank" class="text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text rounded-lg py-3 px-6 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        <i class="fas fa-file-alt text-xl"></i>
-                        <span class="text-lg">CV</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text rounded-lg py-3 px-6 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        <i class="fab fa-linkedin text-xl"></i>
-                        <span class="text-lg">LinkedIn</span>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu -->
-                <div id="mobileMenu" class="md:hidden fixed top-0 left-0 right-0 bg-white z-40 p-6 shadow-md hidden">
-                    <ul>
-                        <li><a href="#about" class="block text-gray-600 hover:text-blue-600 mb-4">About</a></li>
-                        <li><a href="https://drive.google.com/file/d/1Gx8zapGImyJv3wmRbonZO_F1Gg_3fFEy/view?usp=sharing" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">CV</a></li>
-                        <li><a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="dot"></span>
+      Omar Hamed <small>/ ai engineer</small>
+    </a>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#certs">certifications</a>
+      <a href="#skills">skills</a>
+      <a class="nav-cta" href="#contact">get in touch</a>
     </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark mode"><i class="theme-ico fas fa-moon"></i></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+  </div>
 </nav>
 
-
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="md:hidden fixed top-0 left-0 right-0 bg-white z-40 p-6 shadow-md hidden">
-        <ul>
-            <li><a href="#about" class="block text-gray-600 hover:text-blue-600 mb-4">About</a></li>
-            <li><a href="https://drive.google.com/file/d/1Gx8zapGImyJv3wmRbonZO_F1Gg_3fFEy/view?usp=sharing" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">CV</a></li>
-            <li><a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="block text-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text py-3 px-6 mb-4">LinkedIn</a></li>
-        </ul>
-    </div>
-
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 pt-24 pb-12">
-        <!-- About Section -->
-        <section id="about" class="mb-16">
-            <div class="card p-8" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                    <!-- Profile Picture -->
-                    <div class="w-48 h-48 flex-shrink-0" data-aos="fade-right" data-aos-delay="200">
-                        <img
-                            src="photos/me.jpg"
-                            alt="Omar Hamed"
-                            class="profile-image w-full h-full object-cover"
-                        />
-                    </div>
-                    
-                    <!-- About Content -->
-                    <div class="flex-grow" data-aos="fade-left" data-aos-delay="400">
-                        <h2 class="text-3xl font-bold mb-4 gradient-text">About Me</h2>
-                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                            Data Analyst & Data Scientist pursuing a Bachelor's in Artificial Intelligence 
-                            at the University of Menoufia. Passionate about transforming data into meaningful insights 
-                            and building intelligent solutions that make a difference.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Certifications Section -->
-        <section id="certifications" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 gradient-text" data-aos="fade-up">Certifications</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Certification Card 1 -->
-                <div class="card p-6" data-aos="fade-up">
-                    <div class="flex flex-col h-full">
-                        <div class="mb-4">
-                            <!-- Image Section with Gradient Background -->
-                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md hover:scale-[1.02] transform-gpu">
-                                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                                <img src="photos/python_for_everybody.png" 
-                                     alt="Python for Everybody Specialization Certificate from University of Michigan"
-                                     class="w-full h-48 object-contain mx-auto"
-                                     loading="lazy">
-                            </div>
-        
-                            <!-- Certification Details -->
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
-                                Python Programming Professional Certificate
-                            </h3>
-                            <div class="text-center mb-3">
-                                <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                                    <i class="fas fa-university"></i>
-                                    <span class="font-medium">University of Michigan</span>
-                                </div>
-                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Issued: Jul 2024</span>
-                                    <span class="mx-1">•</span>
-                                    <i class="fas fa-infinity"></i>
-                                    <span>Lifetime Validity</span>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <!-- Skill Tags -->
-                        <div class="flex flex-wrap gap-2 mb-4 justify-center">
-                            <span class="skill-tag bg-blue-100 text-blue-800">
-                                <i class="fab fa-python mr-2"></i>Python Programming
-                            </span>
-                            <span class="skill-tag bg-purple-100 text-purple-800">
-                                <i class="fas fa-database mr-2"></i>Data Structures
-                            </span>
-                            <span class="skill-tag bg-blue-100 text-blue-800">
-                                <i class="fas fa-cloud mr-2"></i>Web Scraping
-                            </span>
-                        </div>
-        
-                        <!-- Verification Link -->
-                        <a href="https://coursera.org/share/1b084d69556f3f4ac0d74d5590cc5c35" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 mt-auto"
-                           aria-label="Verify Python Certification on Coursera">
-                            <i class="fas fa-external-link-alt"></i>
-                            Verify Certificate
-                            <span class="text-xs text-gray-500 ml-2">(Coursera)</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- This is the HCIA-AI V3.5 Certificate -->
-<div class="card p-6" data-aos="fade-up">
-    <div class="flex flex-col h-full">
-        <div class="mb-4">
-            <!-- Image Section with Gradient Background -->
-            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
-                <img src="photos/HCIA.jpg" 
-                     alt="HCIA-AI V3.5 Course Certificate"
-                     class="w-full h-48 object-contain mx-auto"
-                     loading="lazy">
-            </div>
-
-            <!-- Certification Details -->
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
-                HCIA-AI V3.5 Course Certificate
-            </h3>
-            <div class="text-center mb-3">
-                <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                    <i class="fas fa-university"></i>
-                    <span class="font-medium">Huawei Talent Online</span>
-                </div>
-                <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Issued: Feb 27, 2025</span>
-                    <span class="mx-1">•</span>
-                    <i class="fas fa-infinity"></i>
-                    <span>Lifetime Validity</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Skill Tags -->
-        <div class="flex flex-wrap gap-2 mb-4 justify-center">
-            <span class="skill-tag bg-blue-100 text-blue-800">
-                <i class="fab fa-python mr-2"></i>Machine Learning
-            </span>
-            <span class="skill-tag bg-purple-100 text-purple-800">
-                <i class="fas fa-database mr-2"></i>AI Fundamentals
-            </span>
-            <span class="skill-tag bg-blue-100 text-blue-800">
-                <i class="fas fa-cloud mr-2"></i>Deep Learning
-            </span>
-        </div>
-
-
-        <!-- Verification Link -->
-        <a href="https://drive.google.com/file/d/1sUjR06gU1Vqnc6ZkVsyWN4AbHvsHl8ID/view?usp=sharing" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="inline-flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 mt-auto"
-           aria-label="Verify HCIA-AI V3.5 Certificate">
-            <i class="fas fa-external-link-alt"></i>
-            Verify Certificate
-        </a>
-    </div>
+<!-- mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-top">
+    <span class="brand"><span class="dot"></span>Omar Hamed</span>
+    <button class="theme-btn" id="themeBtnM" aria-label="Toggle theme" style="margin-left:0"><i class="theme-ico fas fa-moon"></i></button>
+    <button class="menu-btn" id="closeBtn" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  </div>
+  <a href="#about"><span class="ix">01</span>about</a>
+  <a href="#experience"><span class="ix">02</span>experience</a>
+  <a href="#projects"><span class="ix">03</span>projects</a>
+  <a href="#certs"><span class="ix">04</span>certifications</a>
+  <a href="#skills"><span class="ix">05</span>skills</a>
+  <a href="#contact"><span class="ix">06</span>contact</a>
 </div>
 
+<main id="top">
 
-        
-                <!-- Add more certification cards here -->
-                <div class="card p-6" data-aos="fade-up">
-                    <div class="flex flex-col h-full">
-                        <div class="mb-4">
-                            <!-- Image Container -->
-                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
-                                <img src="photos\nti_data_analisis.png" 
-                                     alt="Digital Egypt Youth Program Certificate in Data Analysis" 
-                                     class="w-full h-48 object-contain mx-auto"
-                                     loading="lazy">
-                            </div>
-                
-                            <!-- Certification Details -->
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
-                                Data Analysis: Skills for the Freelance Professional
-                            </h3>
-                            <div class="text-center mb-3">
-                                <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                                    <i class="fas fa-university"></i>
-                                    <span class="font-medium">Ministry of Communications & IT</span>
-                                </div>
-                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
-                                    <i class="fas fa-certificate"></i>
-                                    <span>Digital Egypt Youth Program</span>
-                                </div>
-                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-2">
-                                    <i class="fas fa-calendar-day"></i>
-                                    <span>17 Jul 2024 - 16 Sep 2024</span>
-                                </div>
-                            </div>
-                
-                            <!-- Performance Details -->
-                            <div class="grid grid-cols-2 gap-4 mt-4 text-center">
-                                <div class="bg-blue-50 p-3 rounded-lg">
-                                    <p class="text-sm font-semibold text-blue-800">Technical Hours</p>
-                                    <p class="text-xl font-bold text-gray-800">90</p>
-                                </div>
-                                <div class="bg-purple-50 p-3 rounded-lg">
-                                    <p class="text-sm font-semibold text-purple-800">Freelancing Hours</p>
-                                    <p class="text-xl font-bold text-gray-800">30</p>
-                                </div>
-                                <div class="col-span-2 bg-green-50 p-3 rounded-lg">
-                                    <p class="text-sm font-semibold text-green-800">Final Score</p>
-                                    <p class="text-2xl font-bold text-gray-800">100%</p>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <!-- Verification Section -->
-                        <div class="mt-auto pt-4 border-t border-gray-100">
-                            <div class="flex flex-wrap justify-between items-center">
-                                <div class="text-sm text-gray-500">
-                                    <i class="fas fa-id-card"></i>
-                                    Student ID: 108353
-                                </div>
-                                <a href="https://drive.google.com/file/d/1wvA3MgyVy-QgxK8tdbBEUR9rLGDxMpno/view?usp=sharing" 
-                                   target="_blank" 
-                                   rel="noopener noreferrer"
-                                   class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-                                   aria-label="Verify Digital Egypt Certification">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Verify Certificate
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Certification Card 3 -->
-                 <div class="card p-6" data-aos="fade-up">
-        <div class="flex flex-col h-full">
-            <div class="mb-4">
-                <!-- Image Section with Gradient Background -->
-                <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
-                    <img src="photos/nti_AI.jpg" 
-                         alt="NTI/Huawei AI Certificate"
-                         class="w-full h-48 object-contain mx-auto"
-                         loading="lazy">
-                </div>
-
-                <!-- Certification Details -->
-                <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
-                    NTI/Huawei AI Track
-                </h3>
-                <div class="text-center mb-3">
-                    <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                        <i class="fas fa-building"></i>
-                        <span class="font-medium">NTI & Huawei Egyptian Talent Academy</span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Issued: 27/2/2025</span>
-                        <span class="mx-1">•</span>
-                        <i class="fas fa-infinity"></i>
-                        <span>Lifetime Validity</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Skill Tags -->
-            <div class="flex flex-wrap gap-2 mb-4 justify-center">
-                <span class="skill-tag bg-blue-100 text-blue-800">
-                    <i class="fas fa-robot mr-2"></i>Artificial Intelligence
-                </span>
-                <span class="skill-tag bg-purple-100 text-purple-800">
-                    <i class="fas fa-brain mr-2"></i>Machine Learning
-                </span>
-                <span class="skill-tag bg-blue-100 text-blue-800">
-                    <i class="fas fa-lightbulb mr-2"></i>Deep Learning
-                </span>
-            </div>
-
-            <!-- Verification Link -->
-            <a href="https://www.linkedin.com/posts/omar-hamed2410_artificialintelligence-machinelearning-deeplearning-activity-7339724697728614400-Bsw3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 mt-auto"
-               aria-label="Verify Certificate on NTI">
-                <i class="fas fa-external-link-alt"></i>
-                Verify Certificate
-                <span class="text-xs text-gray-500 ml-2">(NTI Initiative)</span>
-            </a>
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="det-label">detected: <b>human</b> · class <b>ai_engineer</b> · <span class="conf">conf 0.98</span></span>
+        <h1>Omar Hamed<br><span class="accent">Ali</span></h1>
+        <p class="hero-role">AI Engineer<span class="sep">/</span>Data Scientist<span class="sep">/</span>Power BI Specialist</p>
+        <p class="hero-desc">I build real-world AI systems — from computer-vision pipelines and RAG-powered LLM apps to production data workflows and Power BI dashboards. Turning messy data into things that actually ship.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects"><i class="fas fa-cube"></i> View projects</a>
+          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1hk2Gzr6goUIx_WBEQMapuj8daq5Grw0S/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> Download CV</a>
         </div>
+        <div class="metrics">
+          <div class="metric"><div class="n">3.59<span style="color:var(--muted);font-size:1rem">/4</span></div><div class="l">GPA · AI degree</div></div>
+          <div class="metric"><div class="n">13+</div><div class="l">Projects shipped</div></div>
+          <div class="metric"><div class="n">6</div><div class="l">Certifications</div></div>
+        </div>
+      </div>
+      <div class="shot">
+        <span class="tag">omar_hamed.jpg</span>
+        <img src="photos/me.jpg" alt="Omar Hamed Ali" />
+        <div class="frame"></div>
+        <span class="corner-tr"></span><span class="corner-bl"></span>
+        <span class="scan"></span>
+      </div>
     </div>
-                <!-- Certification Card 4 -->
-                 <div class="card p-6" data-aos="fade-up">
-        <div class="flex flex-col h-full">
-            <div class="mb-4">
-                <!-- Image Section with Gradient Background -->
-                <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
-                    <img src="photos/Pea_certificate.png" 
-                         alt="Data Analysis Certificate"
-                         class="w-full h-48 object-contain mx-auto"
-                         loading="lazy">
-                </div>
+  </div>
+</header>
 
-                <!-- Certification Details -->
-                <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
-                    Completion Certificate - Data Analysis
-                </h3>
-                <div class="text-center mb-3">
-                    <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                        <i class="fas fa-building"></i>
-                        <span class="font-medium">PeaLearning & Education Canada Inc.</span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Issued: Jun 16, 2025</span>
-                        <span class="mx-1">•</span>
-                        <i class="fas fa-infinity"></i>
-                        <span>Lifetime Validity</span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2 text-sm text-gray-500 mt-1">
-                        <i class="fas fa-flask"></i>
-                        <span>Includes Practical Training</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Skill Tags -->
-            <div class="flex flex-wrap gap-2 mb-4 justify-center">
-                <span class="skill-tag bg-blue-100 text-blue-800">
-                    <i class="fas fa-chart-bar mr-2"></i>Data Analysis
-                </span>
-                <span class="skill-tag bg-purple-100 text-purple-800">
-                    <i class="fas fa-laptop-code mr-2"></i>Practical Skills
-                </span>
-                <span class="skill-tag bg-blue-100 text-blue-800">
-                    <i class="fas fa-database mr-2"></i>Excel
-                </span>
-                <span class="skill-tag bg-purple-100 text-purple-800">
-                    <i class="fas fa-laptop-code mr-2"></i>Power BI
-                </span>
-            </div>
-
-            <!-- Verification Link -->
-            <a href="https://drive.google.com/file/d/1Wd3dyuWEUDQhJR75kF6TZvdk9xMm-tvx/view?usp=sharing" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 mt-auto"
-               aria-label="Verify Certificate on PeaLearning">
-                <i class="fas fa-external-link-alt"></i>
-                Verify Certificate
-                <span class="text-xs text-gray-500 ml-2">(PeaLearning Initiative)</span>
-            </a>
-        </div>
+<!-- ===================== ABOUT ===================== -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">about</span>
+      <h2 class="section-title">Engineer first, analyst always</h2>
     </div>
-                <!-- Certification Card 5 -->
-                <div class="card p-6" data-aos="fade-up">
-                    <div class="flex flex-col h-full">
-                        <div class="mb-4">
-                            <!-- Image Section with Gradient Background -->
-                            <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl mb-6 transition-all duration-300 hover:shadow-md">
-                                <img src="photos/one_milion_ai.png" 
-                                     alt="1 Million AI Prompters Completion Certificate"
-                                     class="w-full h-48 object-contain mx-auto"
-                                     loading="lazy">
-                            </div>
-                
-                            <!-- Certification Details -->
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-2 text-center">
-                                Completion Certificate - 1 Million AI Prompters
-                            </h3>
-                            <div class="text-center mb-3">
-                                <div class="flex items-center justify-center gap-2 text-gray-600 mb-2">
-                                    <i class="fas fa-building"></i>
-                                    <span class="font-medium">Dubai Centre for Artificial Intelligence</span>
-                                </div>
-                                <div class="flex items-center justify-center gap-2 text-sm text-gray-500">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span>Issued: 2024</span>
-                                    <span class="mx-1">•</span>
-                                    <i class="fas fa-infinity"></i>
-                                    <span>Lifetime Validity</span>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <!-- Skill Tags -->
-                        <div class="flex flex-wrap gap-2 mb-4 justify-center">
-                            <span class="skill-tag bg-blue-100 text-blue-800">
-                                <i class="fas fa-robot mr-2"></i>Prompt Engineering
-                            </span>
-                            <span class="skill-tag bg-purple-100 text-purple-800">
-                                <i class="fas fa-brain mr-2"></i>Artificial Intelligence
-                            </span>
-                            <span class="skill-tag bg-blue-100 text-blue-800">
-                                <i class="fas fa-lightbulb mr-2"></i>Future Skills
-                            </span>
-                        </div>
-                
-                        <!-- Verification Link -->
-                        <a href="https://omp.dub.ai/certificate/irHwnTMMuCNw" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 mt-auto"
-                           aria-label="Verify Certificate on Dubai AI">
-                            <i class="fas fa-external-link-alt"></i>
-                            Verify Certificate
-                            <span class="text-xs text-gray-500 ml-2">(Dubai AI Initiative)</span>
-                        </a>
-                    </div>
-                </div>
-                
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="mt-16">
-            <h2 class="text-3xl font-bold mb-8 gradient-text" data-aos="fade-up">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="card overflow-hidden" data-aos="fade-up">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Electric Cars Analysis</h3>
-                        <p class="text-gray-600 mb-6">
-                            Analysis of electric car data using Python, featuring data visualization 
-                            and statistical analysis using Pandas, NumPy, and Matplotlib.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Pandas</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">NumPy</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Matplotlib</span>
-                        </div>
-                        <a href="https://github.com/omarhamed888/electric-cars-project" 
-                           class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300">
-                            <i class="fab fa-github"></i>
-                            View on GitHub
-                        </a>
-                    </div>
-                </div>
-                <!--pea project-->
-                
-                <!-- Project 2 -->
-                <div class="card overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Data Processing and Machine Learning GUI</h3>
-                        <p class="text-gray-600 mb-6">
-                            A GUI application for data processing and machine learning using Tkinter. 
-                            Implements OOP structure with Pandas, Scikit-learn, and NumPy integration.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Tkinter</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Pandas</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Preprocessing</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Scikit-learn</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">NumPy</span>
-                        </div>
-                        <a href="https://github.com/omarhamed888/2ndYearMLproject" 
-                           class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300">
-                            <i class="fab fa-github"></i>
-                            View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 - Wide Version -->
-                <div class="card overflow-hidden md:col-span-2" data-aos="fade-up">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">HR Analytics Dashboard</h3>
-                        <p class="text-gray-600 mb-4">
-                            Comprehensive analysis of employee attrition, promotion trends, and workforce demographics 
-                            with interactive Power BI visualizations.
-                        </p>
-                        
-                        <!-- Expanded Image Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <img src="photos/HR1.jpg" 
-                            alt="HR Analytics Dashboard showing employee attrition trends" 
-                            class="rounded-lg w-full h-73 aspect-video object-cover hover:shadow-xl transition-all duration-300"
-                            loading="lazy">
-                            <img src="photos/HR2.jpg" alt="Promotion Trends Visualization" 
-                            class="rounded-lg w-full h-73 aspect-video object-cover">
-                        </div>
-
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">HR Analytics</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Modeling</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Dashboard Design</span>
-                        </div>
-
-                        <a href="https://www.linkedin.com/posts/omar-hamed2410_hranalytics-datavisualization-powerbi-activity-7233809646593949696-OSej?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
-                        class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-                        target="_blank" 
-                        rel="noopener">
-                            <i class="fab fa-linkedin"></i>
-                            View on LinkedIn
-                        </a>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                 <div class="card overflow-hidden md:col-span-2" data-aos="fade-up">
-        <div class="p-6">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Pakistan Ecommerce Dashboard</h3>
-            <p class="text-gray-600 mb-4">
-                Detailed analysis of customer trends, top products, sales impact, and payment methods using Power BI visualizations.
-            </p>
-            
-            <!-- Expanded Image Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <img src="photos/Pea_project1.png" alt="Customer and Product Analysis" 
-                     class="rounded-lg w-full h-73 aspect-video object-cover">
-                <img src="photos/Pea_project2.png" alt="Sales and Payment Trends" 
-                     class="rounded-lg w-full h-73 aspect-video object-cover">
-            </div>
-
-            <div class="flex flex-wrap gap-2 mb-6">
-                <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
-                <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                <span class="skill-tag bg-gray-100 text-gray-800">Ecommerce Analytics</span>
-                <span class="skill-tag bg-gray-100 text-gray-800">Data Visualization</span>
-                <span class="skill-tag bg-gray-100 text-gray-800">Sales Analysis</span>
-            </div>
-
-            <a href="https://drive.google.com/file/d/1YMOFHe_s5OQrY3NMTAcL6dbiPPmvb6pl/view?usp=sharing" 
-               class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-               target="_blank" 
-               rel="noopener">
-                <i class="fab fa-linkedin"></i>
-                View on LinkedIn
-            </a>
-        </div>
+    <div class="about-grid">
+      <div data-reveal>
+        <p class="about-lead">An <b>AI Engineer and Data Scientist</b> pursuing a B.Sc. in Artificial Intelligence at the University of Menoufia — building intelligent systems and leading technical teams.</p>
+        <p class="about-body">My work spans the full stack of applied AI: training deep-learning and computer-vision models, integrating LLMs and RAG into real products, and engineering clean data pipelines that hold up in production. Alongside the engineering, I've led data-analysis teams, mentored junior analysts, and run hands-on AI training programs. I care about work that ships and data you can trust.</p>
+      </div>
+      <div class="facts" data-reveal>
+        <div class="fact"><span class="k">Role</span><span class="v">System Developer · <span class="hl">AI Team</span></span></div>
+        <div class="fact"><span class="k">Company</span><span class="v">Business Development Institute</span></div>
+        <div class="fact"><span class="k">Location</span><span class="v">Cairo, Egypt</span></div>
+        <div class="fact"><span class="k">Focus</span><span class="v"><span class="hl">CV · NLP/LLMs · Data</span></span></div>
+        <div class="fact"><span class="k">Languages</span><span class="v">Arabic (native) · English</span></div>
+        <div class="fact"><span class="k">Status</span><span class="v"><span class="hl">Open to opportunities</span></span></div>
+      </div>
     </div>
-                <!-- Project 5 - Updated -->
-                <div class="card overflow-hidden md:col-span-2" data-aos="fade-up">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Interactive Sales Dashboard</h3>
-                        <p class="text-gray-600 mb-4">
-                            Provides insights into total profit, costs, and units sold, with breakdowns by category, 
-                            ship mode, and geography using advanced Power BI visualizations.
-                        </p>
-                        
-                        <!-- Image Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <img src="photos/sales11.jpg" alt="Sales Overview Dashboard" 
-                                class="rounded-lg w-full h-73 aspect-video object-cover">
-                            <img src="photos/sales12.jpg" alt="Geographical Sales Breakdown" 
-                                class="rounded-lg w-full h-73 aspect-video object-cover">
-                        </div>
-                
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Data Modeling</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">Sales Analytics</span>
-                            <span class="skill-tag bg-gray-100 text-gray-800">KPI Tracking</span>
-                        </div>
-                
-                        <a href="https://www.linkedin.com/posts/omar-hamed2410_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-fVV-?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
-                           class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-                           target="_blank" 
-                           rel="noopener">
-                            <i class="fab fa-linkedin"></i>
-                            View on LinkedIn
-                        </a>
-                    </div>
-                </div>
-             <!-- HR Dashboard Project -->
-        <div class="card overflow-hidden" data-aos="fade-up">
-            <div class="p-6">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-2">HR Analytics Dashboard</h3>
-                <p class="text-gray-600 mb-6">
-                    Comprehensive HR metrics analysis featuring gender distribution, turnover rates, 
-                    promotion trends, and regional workforce breakdowns using Power BI.
-                </p>
-                
-                <div class="grid grid-cols-1 gap-4 mb-6">
-                    <img src="photos/m4.jpeg" alt="HR Dashboard - Gender Distribution" 
-                        class="rounded-lg w-full h-full object-cover project-image">
-                </div>
-
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
-                    <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                    <span class="skill-tag bg-gray-100 text-gray-800">Data Visualization</span>
-                    <span class="skill-tag bg-gray-100 text-gray-800">HR Analytics</span>
-                </div>
-
-                <a href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
-                class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-                target="_blank" 
-                rel="noopener">
-                    <i class="fab fa-linkedin"></i>
-                    View on LinkedIn
-                </a>
-            </div>
-        </div>
-        <!-- Churn Analysis Dashboard Project -->
-            <div class="card overflow-hidden" data-aos="fade-up">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Customer Churn Analysis Dashboard</h3>
-                    <p class="text-gray-600 mb-6">
-                        Comprehensive customer churn analysis dashboard tracking risk metrics, 
-                        demographic distributions, and financial trends using Power BI.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 gap-4 mb-6">
-                        <img src="photos/m1.jpg" alt="Churn Dashboard - Key Metrics Overview" 
-                            class="rounded-lg w-full h-full object-cover project-image">
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="skill-tag bg-gray-100 text-gray-800">Power BI</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">Customer Analytics</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">Data Visualization</span>
-                    </div>
-
-                    <a href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
-                    class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-                    target="_blank" 
-                    rel="noopener">
-                        <i class="fab fa-linkedin"></i>
-                        View on LinkedIn
-                    </a>
-                </div>
-            </div>
-            <!-- E-Commerce Dashboard Project (Single Image) -->
-            <div class="card overflow-hidden" data-aos="fade-up">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">E-Commerce Sales Dashboard</h3>
-                    <p class="text-gray-600 mb-6">
-                        Comprehensive sales analytics dashboard tracking $227K+ in profits, customer segmentation, 
-                        and regional performance across product categories using Power BI.
-                    </p>
-                    
-                    <!-- Single Image Display -->
-                    <div class="grid grid-cols-1 gap-4 mb-6">
-                        <img src="photos/m2.jpg" 
-                            alt="E-Commerce Dashboard showing sales metrics, customer segments, and regional performance" 
-                            class="rounded-lg w-full h-full object-cover project-image">
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="skill-tag bg-gray-100 text-gray-800">Excel</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">DAX</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">Sales Analytics</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">Customer Segmentation</span>
-                        <span class="skill-tag bg-gray-100 text-gray-800">Data Modeling</span>
-                    </div>
-
-                    <a href="https://www.linkedin.com/posts/omar-hamed2410_excel-dataabranalysis-activity-7228308384607793152-aUgm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" 
-                    class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-                    target="_blank" 
-                    rel="noopener">
-                        <i class="fab fa-linkedin"></i>
-                        View on LinkedIn
-                    </a>
-                </div>
-            </div>
-         </div>
-     </section>
-     <!-- Contact Section -->
-<section id="contact" class="mt-16">
-    <h2 class="text-3xl font-bold mb-8 gradient-text" data-aos="fade-up">Contact Me</h2>
-    <div class="card p-8" data-aos="fade-up">
-        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-            Feel free to reach out to me through any of the following channels:
-        </p>
-
-        <!-- Contact Info -->
-        <div class="space-y-4">
-            <div class="flex items-center gap-3">
-                <i class="fas fa-envelope text-blue-500"></i>
-                <a href="mailto:omar.hamed2410@gmail.com" class="text-lg text-gray-600 hover:text-blue-600">omar.hamed2410@gmail.com</a>
-            </div>
-            <div class="flex items-center gap-3">
-                <!-- Phone Call Link -->
-                <a href="tel:+201017045285" class="flex items-center gap-3">
-                    <i class="fas fa-phone-alt text-blue-500"></i>
-                    <span class="text-lg text-gray-600">+201017045285</span>
-                </a>
-            </div>
-            
-            <div class="flex items-center gap-3">
-                <!-- WhatsApp Link -->
-                <a href="https://wa.me/+201017045285" target="_blank" class="flex items-center gap-3">
-                    <i class="fab fa-whatsapp text-green-500"></i>
-                    <span class="text-lg text-gray-600">WhatsApp</span>
-                </a>
-            </div>
-            
-            <div class="flex items-center gap-3">
-                <i class="fab fa-linkedin text-blue-500"></i>
-                <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" class="text-lg text-gray-600 hover:text-blue-600">LinkedIn Profile</a>
-            </div>
-            <div class="flex items-center gap-3">
-                <i class="fas fa-file-alt text-blue-500"></i>
-                <a href="https://drive.google.com/file/d/1Gx8zapGImyJv3wmRbonZO_F1Gg_3fFEy/view?usp=sharing" target="_blank" class="text-lg text-gray-600 hover:text-blue-600">View My CV</a>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-    </main>
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="section" id="experience" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">experience</span>
+      <h2 class="section-title">Where I've worked</h2>
+      <p class="section-sub">A track record across AI engineering, systems development, and data analysis — from internships to leading teams.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item now" data-reveal>
+        <div class="tl-date">APR 2026 — PRESENT</div>
+        <div class="tl-role">System Developer &amp; AI Team Member</div>
+        <div class="tl-org">Business Development Institute (BDI) <span class="loc">· Cairo · Hybrid</span></div>
+        <ul class="tl-pts">
+          <li>Build and maintain internal systems and automation workflows, integrating AI capabilities to streamline operations.</li>
+          <li>Collaborate with the AI team to design data-driven solutions and structure datasets for downstream use.</li>
+        </ul>
+      </div>
+      <div class="tl-item now" data-reveal>
+        <div class="tl-date">MAR 2026 — PRESENT</div>
+        <div class="tl-role">Information Technology Specialist</div>
+        <div class="tl-org">Institute of Sales Excellence (ISE) <span class="loc">· Menofia · Hybrid</span></div>
+        <ul class="tl-pts">
+          <li>Manage and support IT systems and technical infrastructure for reliable day-to-day operations.</li>
+          <li>Deliver technical solutions and troubleshooting across software, tools, and internal workflows.</li>
+        </ul>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-date">SEP 2025 — JUN 2026</div>
+        <div class="tl-role">L&amp;D Manager &amp; AI Engineer</div>
+        <div class="tl-org">Paths4 AI <span class="loc">· Menofia · Hybrid</span></div>
+        <ul class="tl-pts">
+          <li>Built and deployed AI-powered solutions using LLMs and modern AI tools.</li>
+          <li>Designed and delivered practical AI training programs, simplifying complex topics through hands-on demos.</li>
+        </ul>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-date">JUL 2025 — APR 2026</div>
+        <div class="tl-role">Business Development Intern</div>
+        <div class="tl-org">Business Development Institute (BDI) <span class="loc">· Shebin El Kom · On-site</span></div>
+        <ul class="tl-pts">
+          <li>Worked with the AI team on data-driven solutions and cleaned, enriched business datasets.</li>
+        </ul>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-date">OCT 2024 — SEP 2025</div>
+        <div class="tl-role">Co-Lead, Data Analysis Team</div>
+        <div class="tl-org">PIE &amp; AI: Shebeen El-Kom <span class="loc">· Menofia · Hybrid</span></div>
+        <ul class="tl-pts">
+          <li>Led data-analysis initiatives and quality-validation reviews across shared datasets.</li>
+          <li>Mentored junior analysts on Excel, Power BI, and analysis tools; automated reporting with Python &amp; DAX.</li>
+        </ul>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-date">DEC 2023 — JAN 2024</div>
+        <div class="tl-role">Power BI Job Simulation Intern</div>
+        <div class="tl-org">PwC &amp; Forage <span class="loc">· Remote</span></div>
+        <ul class="tl-pts">
+          <li>Built Power BI dashboards using DAX to generate business insights for better decisions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Scroll to Top Button -->
-    <div id="scrollToTop" class="scroll-to-top">
-        <i class="fas fa-arrow-up"></i>
+<!-- ===================== PROJECTS ===================== -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">projects</span>
+      <h2 class="section-title">Things I've built</h2>
+      <p class="section-sub">Selected work across AI/ML engineering and data &amp; BI. Click any dashboard to inspect it full-size.</p>
     </div>
 
+    <!-- AI / ML group -->
+    <p class="proj-group-label" data-reveal><i class="fas fa-brain"></i> AI / ML Engineering</p>
+    <div class="grid cols-2" style="margin-bottom:46px">
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fas fa-video"></i></div>
+        <h3>AI-Powered Security Monitoring</h3>
+        <p>Real-time video pipeline that detects, classifies, and tracks subjects across frames with YOLOv8 — Dockerized for edge deployment with live Telegram alerting.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">YOLOv8</span><span class="tag">Docker</span><span class="tag">Telegram API</span></div>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fas fa-comments"></i></div>
+        <h3>RAG-Powered Educational Chatbot API</h3>
+        <p>A chatbot API leveraging Retrieval-Augmented Generation for Egyptian educational content, with intelligent query processing for contextual, accurate responses.</p>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">RAG</span><span class="tag">REST API</span><span class="tag">LLMs</span></div>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fas fa-id-badge"></i></div>
+        <h3>CareerCraft — AI Career Platform</h3>
+        <p>Full-stack Flask app using the Gemini API to optimize CVs, match job descriptions, and simulate interviews — with a responsive UI and dynamic PDF reports.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Gemini API</span></div>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fas fa-robot"></i></div>
+        <h3>Najeeb Chatbot — NLP</h3>
+        <p>An NLP chatbot with web-scraping and preprocessing pipelines, using tokenization and NER for context-aware query handling.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">NLTK</span><span class="tag">SpaCy</span><span class="tag">NER</span></div>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fas fa-microscope"></i></div>
+        <h3>SkinCancerCNN</h3>
+        <p>A CNN for skin-lesion classification with data augmentation and preprocessing, plus a GUI to support medical professionals in diagnosis.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Tkinter</span><span class="tag">CNN</span></div>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fab fa-github"></i></div>
+        <h3>Data Processing &amp; ML GUI</h3>
+        <p>A Tkinter GUI application for data processing and machine learning, built with an OOP structure integrating Pandas, Scikit-learn, and NumPy.</p>
+        <div class="tags"><span class="tag">Tkinter</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">NumPy</span></div>
+        <a class="proj-link" href="https://github.com/omarhamed888/2ndYearMLproject" target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
 
-
-    
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center hidden">
-        <div class="relative max-w-4xl w-full p-4">
-            <button id="closeLightbox" class="absolute top-4 right-4 text-white text-3xl z-50">&times;</button>
-            <img id="lightboxImage" src="" alt="" class="max-h-[90vh] mx-auto">
+    <!-- Data & BI group -->
+    <p class="proj-group-label" data-reveal><i class="fas fa-chart-column"></i> Data &amp; BI Dashboards</p>
+    <div class="grid cols-2">
+      <div class="card span-2" data-reveal>
+        <h3>HR Analytics Dashboard</h3>
+        <p>Analysis of employee attrition, promotion trends, and workforce demographics with interactive Power BI visualizations.</p>
+        <div class="shots two">
+          <div class="imgbox"><img src="photos/HR1.jpg" alt="HR Analytics Dashboard — attrition trends" loading="lazy" /></div>
+          <div class="imgbox"><img src="photos/HR2.jpg" alt="Promotion trends visualization" loading="lazy" /></div>
         </div>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">HR Analytics</span><span class="tag">Data Modeling</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_hranalytics-datavisualization-powerbi-activity-7233809646593949696-OSej?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="card span-2" data-reveal>
+        <h3>Pakistan E-commerce Dashboard</h3>
+        <p>Analysis of customer trends, top products, sales impact, and payment methods using Power BI.</p>
+        <div class="shots two">
+          <div class="imgbox"><img src="photos/Pea_project1.png" alt="Customer and product analysis" loading="lazy" /></div>
+          <div class="imgbox"><img src="photos/Pea_project2.png" alt="Sales and payment trends" loading="lazy" /></div>
+        </div>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">E-commerce</span><span class="tag">Sales Analysis</span></div>
+        <a class="proj-link" href="https://drive.google.com/file/d/1YMOFHe_s5OQrY3NMTAcL6dbiPPmvb6pl/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-up-right-from-square"></i> View dashboard <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="card span-2" data-reveal>
+        <h3>Interactive Sales Dashboard</h3>
+        <p>End-to-end sales analytics with KPI tracking and geographical breakdowns, modeled and visualized in Power BI.</p>
+        <div class="shots two">
+          <div class="imgbox"><img src="photos/sales11.jpg" alt="Sales overview dashboard" loading="lazy" /></div>
+          <div class="imgbox"><img src="photos/sales12.jpg" alt="Geographical sales breakdown" loading="lazy" /></div>
+        </div>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">KPI Tracking</span><span class="tag">Sales Analytics</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-fVV-?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="card" data-reveal>
+        <h3>Customer Churn Analysis</h3>
+        <p>Churn dashboard tracking risk metrics, demographic distributions, and financial trends in Power BI.</p>
+        <div class="shots"><div class="imgbox"><img src="photos/m1.jpg" alt="Churn dashboard — key metrics" loading="lazy" /></div></div>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Customer Analytics</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="card" data-reveal>
+        <h3>E-Commerce Sales Dashboard</h3>
+        <p>Sales analytics tracking $227K+ in profit, customer segmentation, and regional performance across categories.</p>
+        <div class="shots"><div class="imgbox"><img src="photos/m2.jpg" alt="E-commerce dashboard — sales metrics" loading="lazy" /></div></div>
+        <div class="tags"><span class="tag">Excel</span><span class="tag">DAX</span><span class="tag">Segmentation</span><span class="tag">Data Modeling</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_excel-dataabranalysis-activity-7228308384607793152-aUgm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="card" data-reveal>
+        <h3>Workforce HR Dashboard</h3>
+        <p>HR metrics covering gender distribution, turnover, promotion trends, and regional workforce breakdowns in Power BI.</p>
+        <div class="shots"><div class="imgbox"><img src="photos/m4.jpeg" alt="HR dashboard — gender distribution" loading="lazy" /></div></div>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">HR Analytics</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="card" data-reveal>
+        <div class="card-ico"><i class="fab fa-github"></i></div>
+        <h3>Electric Cars Analysis</h3>
+        <p>Statistical analysis of EV market data with Python — data preprocessing and visualization using Pandas, NumPy, and Matplotlib.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span></div>
+        <a class="proj-link" href="https://github.com/omarhamed888/electric-cars-project" target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Initialize AOS -->
-    <script>
-        // Lightbox functionality
-        document.querySelectorAll('.project-image').forEach(img => {
-            img.addEventListener('click', () => {
-                const lightbox = document.getElementById('lightbox');
-                const lightboxImg = document.getElementById('lightboxImage');
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
-        });
+<!-- ===================== CERTIFICATIONS ===================== -->
+<section class="section" id="certs" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">certifications</span>
+      <h2 class="section-title">Verified credentials</h2>
+    </div>
+    <div class="grid cols-2" style="grid-template-columns:repeat(3,1fr)">
 
-        document.getElementById('closeLightbox').addEventListener('click', () => {
-            document.getElementById('lightbox').classList.add('hidden');
-            document.body.style.overflow = '';
-        });
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
+      <div class="cert" data-reveal>
+        <div class="cert-img"><img src="photos/python_for_everybody.png" alt="Python Programming Professional Certificate" loading="lazy" /></div>
+        <h3>Python Programming Professional Certificate</h3>
+        <div class="cert-meta"><i class="fas fa-university"></i> University of Michigan</div>
+        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">Jul 2024 · Lifetime</span></div>
+        <div class="cert-tags"><span class="tag">Python</span><span class="tag">Data Structures</span><span class="tag">Web Scraping</span></div>
+        <a class="verify" href="https://coursera.org/share/1b084d69556f3f4ac0d74d5590cc5c35" target="_blank" rel="noopener">Verify · Coursera <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-        // Scroll to Top Functionality
-        const scrollToTop = document.getElementById('scrollToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTop.classList.add('visible');
-            } else {
-                scrollToTop.classList.remove('visible');
-            }
-        });
+      <div class="cert" data-reveal>
+        <div class="cert-img"><img src="photos/HCIA.jpg" alt="HCIA-AI V3.5 Certificate" loading="lazy" /></div>
+        <h3>HCIA-AI V3.5</h3>
+        <div class="cert-meta"><i class="fas fa-university"></i> Huawei Talent Online</div>
+        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">Feb 2025 · Lifetime</span></div>
+        <div class="cert-tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">AI Fundamentals</span></div>
+        <a class="verify" href="https://drive.google.com/file/d/1sUjR06gU1Vqnc6ZkVsyWN4AbHvsHl8ID/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-        scrollToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+      <div class="cert" data-reveal>
+        <div class="cert-img"><img src="photos/nti_AI.jpg" alt="NTI/Huawei AI Track Certificate" loading="lazy" /></div>
+        <h3>NTI / Huawei AI Track</h3>
+        <div class="cert-meta"><i class="fas fa-building"></i> NTI &amp; Huawei Talent Academy</div>
+        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">Feb 2025 · Lifetime</span></div>
+        <div class="cert-tags"><span class="tag">Artificial Intelligence</span><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span></div>
+        <a class="verify" href="https://www.linkedin.com/posts/omar-hamed2410_artificialintelligence-machinelearning-deeplearning-activity-7339724697728614400-Bsw3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+      <div class="cert" data-reveal>
+        <div class="cert-img"><img src="photos/nti_data_analisis.png" alt="Digital Egypt Data Analysis Certificate" loading="lazy" /></div>
+        <h3>Data Analysis: Skills for the Freelance Professional</h3>
+        <div class="cert-meta"><i class="fas fa-university"></i> Ministry of Communications &amp; IT</div>
+        <div class="cert-meta"><i class="fas fa-certificate"></i> <span class="mono">Digital Egypt · ID 108353</span></div>
+        <div class="cert-stats">
+          <div class="cert-stat"><div class="n">90</div><div class="l">Tech hrs</div></div>
+          <div class="cert-stat"><div class="n">30</div><div class="l">Freelance hrs</div></div>
+          <div class="cert-stat full"><div class="n">100%</div><div class="l">Final score</div></div>
+        </div>
+        <a class="verify" href="https://drive.google.com/file/d/1wvA3MgyVy-QgxK8tdbBEUR9rLGDxMpno/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-        // Toggle Mobile Menu
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        });
-    </script>
+      <div class="cert" data-reveal>
+        <div class="cert-img"><img src="photos/Pea_certificate.png" alt="PeaLearning Data Analysis Certificate" loading="lazy" /></div>
+        <h3>Completion Certificate — Data Analysis</h3>
+        <div class="cert-meta"><i class="fas fa-building"></i> PeaLearning &amp; Education Canada</div>
+        <div class="cert-meta"><i class="fas fa-flask"></i> <span class="mono">Jun 2025 · Practical training</span></div>
+        <div class="cert-tags"><span class="tag">Data Analysis</span><span class="tag">Excel</span><span class="tag">Power BI</span></div>
+        <a class="verify" href="https://drive.google.com/file/d/1Wd3dyuWEUDQhJR75kF6TZvdk9xMm-tvx/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="cert" data-reveal>
+        <div class="cert-img"><img src="photos/one_milion_ai.png" alt="1 Million AI Prompters Certificate" loading="lazy" /></div>
+        <h3>1 Million AI Prompters</h3>
+        <div class="cert-meta"><i class="fas fa-building"></i> Dubai Centre for Artificial Intelligence</div>
+        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">2024 · Lifetime</span></div>
+        <div class="cert-tags"><span class="tag">Prompt Engineering</span><span class="tag">AI</span><span class="tag">Future Skills</span></div>
+        <a class="verify" href="https://omp.dub.ai/certificate/irHwnTMMuCNw" target="_blank" rel="noopener">Verify · Dubai AI <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">skills</span>
+      <h2 class="section-title">Toolbox</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-block" data-reveal>
+        <h4><i class="fas fa-code"></i> Programming</h4>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div class="skill-block" data-reveal>
+        <h4><i class="fas fa-brain"></i> AI / ML</h4>
+        <div class="chips"><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">NLP &amp; LLMs</span><span class="chip">Computer Vision</span><span class="chip">RAG</span><span class="chip">Prompt Engineering</span><span class="chip">Model Deployment</span></div>
+      </div>
+      <div class="skill-block" data-reveal>
+        <h4><i class="fas fa-layer-group"></i> Libraries &amp; Frameworks</h4>
+        <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">OpenCV</span><span class="chip">YOLOv8</span><span class="chip">TensorFlow</span><span class="chip">NLTK</span><span class="chip">SpaCy</span><span class="chip">Flask</span></div>
+      </div>
+      <div class="skill-block" data-reveal>
+        <h4><i class="fas fa-chart-pie"></i> Data &amp; BI</h4>
+        <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Data Modeling</span><span class="chip">Excel</span><span class="chip">EDA</span><span class="chip">Data Cleaning</span><span class="chip">Matplotlib</span></div>
+      </div>
+      <div class="skill-block" data-reveal>
+        <h4><i class="fas fa-screwdriver-wrench"></i> Tools &amp; Infra</h4>
+        <div class="chips"><span class="chip">Git &amp; GitHub</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">REST APIs</span><span class="chip">JSON</span><span class="chip">Jupyter</span></div>
+      </div>
+      <div class="skill-block" data-reveal>
+        <h4><i class="fas fa-database"></i> Big Data</h4>
+        <div class="chips"><span class="chip">HDFS</span><span class="chip">Hive</span><span class="chip">Hadoop</span><span class="chip">Distributed Processing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-card" data-reveal>
+      <div class="contact-grid">
+        <div>
+          <span class="eyebrow">contact</span>
+          <h2 class="contact-h">Let's build<br><span class="accent">something</span> together</h2>
+          <p class="contact-p">Open to AI engineering, data science, and analytics opportunities — remote or on-site. The fastest way to reach me is email or WhatsApp.</p>
+          <div class="hero-cta" style="margin-bottom:0">
+            <a class="btn btn-primary" href="mailto:omar.hamed2410@gmail.com"><i class="fas fa-envelope"></i> Email me</a>
+            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1Gx8zapGImyJv3wmRbonZO_F1Gg_3fFEy/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> My CV</a>
+          </div>
+        </div>
+        <div class="channels">
+          <a class="channel" href="mailto:omar.hamed2410@gmail.com"><i class="fas fa-envelope"></i><div><div class="ct">Email</div><div class="cv">omar.hamed2410@gmail.com</div></div></a>
+          <a class="channel" href="tel:+201017045285"><i class="fas fa-phone"></i><div><div class="ct">Phone</div><div class="cv">+20 101 704 5285</div></div></a>
+          <a class="channel" href="https://wa.me/+201017045285" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><div><div class="ct">WhatsApp</div><div class="cv">Message me</div></div></a>
+          <a class="channel" href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i><div><div class="ct">LinkedIn</div><div class="cv">in/omar-hamed</div></div></a>
+          <a class="channel" href="https://github.com/omarhamed888" target="_blank" rel="noopener"><i class="fab fa-github"></i><div><div class="ct">GitHub</div><div class="cv">omarhamed888</div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="year"></span> Omar Hamed Ali · built in Cairo</div>
+    <div class="foot-social">
+      <a href="https://github.com/omarhamed888" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://wa.me/+201017045285" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:omar.hamed2410@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<div class="totop" id="totop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="x" id="lbClose">&times;</span>
+  <img id="lbImg" src="" alt="Expanded view" />
+</div>
+
+<script>
+(function(){
+  // ---------- THEME (light default + dark toggle, persisted) ----------
+  var THEME_KEY='oh_theme';
+  function store(v){try{localStorage.setItem(THEME_KEY,v);}catch(e){}}
+  function read(){try{return localStorage.getItem(THEME_KEY);}catch(e){return null;}}
+  function setIcons(t){
+    var cls='theme-ico fas '+(t==='dark'?'fa-sun':'fa-moon');
+    document.querySelectorAll('.theme-ico').forEach(function(i){i.className=cls;});
+  }
+  function apply(t){document.documentElement.setAttribute('data-theme',t);setIcons(t);
+    var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#0B0E1A':'#3D5AF1');}
+  var initial=read()||'light';
+  apply(initial);
+  function toggle(){var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';apply(cur);store(cur);}
+  var tb=document.getElementById('themeBtn'),tbm=document.getElementById('themeBtnM');
+  if(tb)tb.addEventListener('click',toggle);
+  if(tbm)tbm.addEventListener('click',toggle);
+
+  var nav=document.getElementById('nav');
+  var drawer=document.getElementById('drawer');
+  var menuBtn=document.getElementById('menuBtn');
+  var closeBtn=document.getElementById('closeBtn');
+  var totop=document.getElementById('totop');
+
+  // nav background on scroll + scroll-to-top visibility
+  function onScroll(){
+    if(window.scrollY>30) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    if(window.scrollY>500) totop.classList.add('show'); else totop.classList.remove('show');
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // mobile drawer
+  function openDrawer(){drawer.classList.add('open');document.body.style.overflow='hidden';}
+  function closeDrawer(){drawer.classList.remove('open');document.body.style.overflow='';}
+  menuBtn.addEventListener('click',openDrawer);
+  closeBtn.addEventListener('click',closeDrawer);
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeDrawer);});
+
+  // scroll to top
+  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  // active nav link via IntersectionObserver
+  var sections=document.querySelectorAll('main section[id], header[id]');
+  var navMap={};
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(a){navMap[a.getAttribute('href').slice(1)]=a;});
+  var navObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        Object.values(navMap).forEach(function(a){a.classList.remove('active');});
+        var id=e.target.getAttribute('id');
+        if(navMap[id]) navMap[id].classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(function(s){navObs.observe(s);});
+
+  // reveal on scroll
+  var revObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){revObs.observe(el);});
+
+  // lightbox
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbClose=document.getElementById('lbClose');
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}
+  document.querySelectorAll('.imgbox img, .cert-img').forEach(function(el){
+    el.style.cursor='zoom-in';
+    el.addEventListener('click',function(){
+      var img=el.tagName==='IMG'?el:el.querySelector('img');
+      if(img) openLb(img.src,img.alt);
+    });
+  });
+  lbClose.addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLb();closeDrawer();}});
+
+  // footer year
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
-
-
