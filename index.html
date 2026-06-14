@@ -1,23 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Set theme before first paint (no flash) + progressive-enhancement flag -->
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('oh_theme') ||
+      ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){ document.documentElement.setAttribute('data-theme','light'); }
+  document.documentElement.classList.add('js');
+})();
+</script>
+
 <title>Omar Hamed Ali — AI Engineer & Data Scientist</title>
 <meta name="description" content="Omar Hamed Ali — AI Engineer and Data Scientist building real-world AI systems in computer vision, NLP/LLMs, and data analytics. Python, YOLOv8, RAG, Power BI." />
 <meta name="author" content="Omar Hamed Ali" />
-<meta name="theme-color" content="#3D5AF1" />
+<meta name="theme-color" content="#FAFBFF" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://omarhamed888.github.io/resume/" />
+
+<!-- Icons -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233D5AF1'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3EOH%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" sizes="180x180" href="photos/apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Omar Hamed Ali — AI Engineer & Data Scientist" />
 <meta property="og:description" content="Building real-world AI systems across computer vision, NLP/LLMs, and data analytics." />
-<meta property="og:image" content="photos/me.jpg" />
+<meta property="og:url" content="https://omarhamed888.github.io/resume/" />
+<meta property="og:site_name" content="Omar Hamed Ali — Portfolio" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://omarhamed888.github.io/resume/photos/og-card.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Omar Hamed Ali — AI Engineer & Data Scientist" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Omar Hamed Ali — AI Engineer & Data Scientist" />
+<meta name="twitter:description" content="Building real-world AI systems across computer vision, NLP/LLMs, and data analytics." />
+<meta name="twitter:image" content="https://omarhamed888.github.io/resume/photos/og-card.jpg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+<!-- Fonts + icons loaded non-render-blocking, with no-JS fallback -->
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</noscript>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Omar Hamed Ali","jobTitle":"AI Engineer & Data Scientist","url":"https://omarhamed888.github.io/resume/","image":"https://omarhamed888.github.io/resume/photos/me.jpg","email":"omar.hamed2410@gmail.com","telephone":"+201017045285","address":{"@type":"PostalAddress","addressLocality":"Cairo","addressCountry":"EG"},"worksFor":{"@type":"Organization","name":"Business Development Institute"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of Menoufia"},"knowsAbout":["Computer Vision","NLP","LLMs","RAG","Power BI","Machine Learning","Data Analysis"],"knowsLanguage":["ar","en"],"sameAs":["https://github.com/omarhamed888","https://www.linkedin.com/in/omar-hamed-020b28251/"]}}
+</script>
 
 <style>
 /* ============================================================
@@ -36,7 +80,7 @@
   --line-soft:#EDF0FA;
   --text:#141826;
   --text-2:#4C5470;
-  --muted:#8990A6;
+  --muted:#666E8C;
   --primary:#3D5AF1;
   --primary-dim:#7C90F7;
   --primary-strong:#2A43C7;
@@ -62,7 +106,7 @@
   --line-soft:#1A2236;
   --text:#ECEFF8;
   --text-2:#A6AECB;
-  --muted:#6E7796;
+  --muted:#8A93B5;
   --primary:#6E83F5;
   --primary-dim:#4F6BED;
   --primary-strong:#8FA1FF;
@@ -92,11 +136,21 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 ::selection{background:var(--primary);color:#fff}
 
+/* Visible keyboard focus everywhere (never removed) */
+:where(a,button):focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:6px}
+.btn-primary:focus-visible,.totop:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+.imgbox:focus-visible,.cert-img:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
 .mono{font-family:var(--font-mono)}
 
+/* visually-hidden helper (skip link) */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--primary);color:var(--on-primary);
+  font-family:var(--font-mono);font-size:.85rem;padding:10px 16px;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+
 .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);display:inline-flex;align-items:center;gap:.6ch}
-.eyebrow::before{content:"//";color:var(--primary-dim)}
+.eyebrow::before{content:"//";color:var(--primary)}
 
 .section{padding:96px 0;position:relative}
 .section-head{margin-bottom:48px}
@@ -104,8 +158,10 @@ img{max-width:100%;display:block}
 .section-sub{color:var(--text-2);max-width:62ch;margin-top:12px;font-size:1.02rem}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s var(--ease),background .3s var(--ease)}
-.nav.scrolled{border-color:var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);background:rgba(250,251,255,.78);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.nav.scrolled{border-color:var(--line);background:rgba(250,251,255,.92);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+[data-theme="dark"] .nav{background:rgba(11,14,26,.78);background:color-mix(in srgb,var(--bg) 78%,transparent)}
+[data-theme="dark"] .nav.scrolled{background:rgba(11,14,26,.92);background:color-mix(in srgb,var(--bg) 92%,transparent)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;font-size:1.05rem}
 .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 0 var(--primary);animation:pulse 2.4s infinite}
@@ -126,7 +182,7 @@ img{max-width:100%;display:block}
 .drawer.open{transform:translateX(0)}
 .drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
 .drawer a{font-family:var(--font-display);font-size:1.6rem;font-weight:600;padding:14px 0;border-bottom:1px solid var(--line-soft);color:var(--text-2)}
-.drawer a .ix{font-family:var(--font-mono);font-size:.8rem;color:var(--primary-dim);margin-right:14px}
+.drawer a .ix{font-family:var(--font-mono);font-size:.8rem;color:var(--primary);margin-right:14px}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative}
@@ -137,12 +193,12 @@ img{max-width:100%;display:block}
 .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,7vw,5rem);line-height:.98;letter-spacing:-.03em;margin:22px 0 18px}
 .hero h1 .accent{color:var(--primary)}
 .hero-role{font-family:var(--font-mono);font-size:clamp(1rem,2.4vw,1.25rem);color:var(--text-2);margin-bottom:24px}
-.hero-role .sep{color:var(--primary-dim);margin:0 .5ch}
+.hero-role .sep{color:var(--primary);margin:0 .5ch}
 .hero-desc{color:var(--text-2);font-size:1.08rem;max-width:54ch;margin-bottom:32px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:42px}
 .btn{font-family:var(--font-mono);font-size:.88rem;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:9px;transition:all .25s var(--ease);cursor:pointer;border:1px solid transparent}
 .btn-primary{background:var(--primary);color:var(--on-primary);font-weight:600}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px var(--glow),var(--shadow)}
+.btn-primary:hover{box-shadow:0 12px 30px -8px var(--glow),var(--shadow)}
 .btn-ghost{border-color:var(--line);color:var(--text);background:var(--surface)}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
 .metrics{display:flex;gap:34px;flex-wrap:wrap}
@@ -150,6 +206,7 @@ img{max-width:100%;display:block}
 .metric .l{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
 
 .shot{position:relative;width:100%;max-width:340px;margin-left:auto;aspect-ratio:4/5}
+.shot picture{display:block;width:100%;height:100%}
 .shot img{width:100%;height:100%;object-fit:cover;border-radius:6px;box-shadow:var(--shadow-lg)}
 .shot .frame{position:absolute;inset:-10px;pointer-events:none}
 .shot .frame::before,.shot .frame::after{content:"";position:absolute;width:34px;height:34px;border:2px solid var(--primary)}
@@ -158,7 +215,7 @@ img{max-width:100%;display:block}
 .shot .corner-tr,.shot .corner-bl{position:absolute;width:34px;height:34px;border:2px solid var(--primary-dim)}
 .shot .corner-tr{top:-10px;right:-10px;border-left:0;border-bottom:0}
 .shot .corner-bl{bottom:-10px;left:-10px;border-right:0;border-top:0}
-.shot .tag{position:absolute;top:-10px;left:24px;transform:translateY(-100%);background:var(--primary);color:#fff;font-family:var(--font-mono);font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:5px 5px 0 0;white-space:nowrap}
+.shot .tag{position:absolute;top:-10px;left:24px;transform:translateY(-100%);background:var(--primary);color:#fff;font-family:var(--font-mono);font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:5px 5px 0 0;white-space:nowrap;z-index:1}
 .shot .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);top:0;opacity:0;animation:scan 4.5s var(--ease) infinite}
 @keyframes scan{0%{top:0;opacity:0}10%{opacity:.9}90%{opacity:.9}100%{top:100%;opacity:0}}
 
@@ -197,7 +254,7 @@ img{max-width:100%;display:block}
 .cols-2{grid-template-columns:repeat(2,1fr)}
 .span-2{grid-column:span 2}
 .card{background:var(--surface-solid);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);position:relative;overflow:hidden;height:100%;box-shadow:var(--shadow)}
-.card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:var(--shadow-lg)}
+.card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg)}
 .card-ico{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;background:var(--surface-2);color:var(--primary);border:1px solid var(--line);margin-bottom:16px}
 .card h3{font-family:var(--font-display);font-size:1.28rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
 .card p{color:var(--text-2);font-size:.94rem;margin-bottom:16px}
@@ -208,6 +265,7 @@ img{max-width:100%;display:block}
 .shots{display:grid;gap:14px;margin-bottom:18px}
 .shots.two{grid-template-columns:1fr 1fr}
 .imgbox{position:relative;border-radius:10px;overflow:hidden;cursor:zoom-in;border:1px solid var(--line)}
+.imgbox picture,.cert-img picture{display:block;width:100%}
 .imgbox img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .5s var(--ease)}
 .imgbox:hover img{transform:scale(1.05)}
 .imgbox::after{content:"\2922 inspect";position:absolute;left:10px;bottom:10px;font-family:var(--font-mono);font-size:.7rem;color:#fff;background:var(--primary);padding:3px 8px;border-radius:5px;opacity:0;transform:translateY(6px);transition:all .3s var(--ease)}
@@ -215,10 +273,10 @@ img{max-width:100%;display:block}
 
 /* CERTIFICATIONS */
 .cert{background:var(--surface-solid);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s;box-shadow:var(--shadow)}
-.cert:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cert:hover{border-color:var(--primary);box-shadow:var(--shadow-lg)}
 .cert-img{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:10px;padding:12px;margin-bottom:16px;cursor:zoom-in}
 .cert-img img{width:100%;height:150px;object-fit:contain}
-.cert h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;line-height:1.25;margin-bottom:10px}
+.cert h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;line-height:1.25;margin-bottom:10px;min-height:2.6em}
 .cert-meta{font-size:.85rem;color:var(--text-2);margin-bottom:4px;display:flex;align-items:center;gap:8px}
 .cert-meta i{color:var(--primary);width:14px;text-align:center}
 .cert-meta .mono{color:var(--muted);font-size:.78rem}
@@ -248,7 +306,7 @@ img{max-width:100%;display:block}
 .contact-p{color:var(--text-2);margin-bottom:26px}
 .channels{display:flex;flex-direction:column;gap:12px}
 .channel{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);transition:all .25s var(--ease)}
-.channel:hover{border-color:var(--primary);transform:translateX(4px)}
+.channel:hover{border-color:var(--primary)}
 .channel i{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;background:var(--surface-solid);color:var(--primary);font-size:1rem;flex-shrink:0;border:1px solid var(--line-soft)}
 .channel .ct{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .channel .cv{font-weight:500;color:var(--text);word-break:break-all}
@@ -259,18 +317,44 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 .foot a:hover{color:var(--primary)}
 .foot-social{display:flex;gap:10px}
 .foot-social a{width:38px;height:38px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;color:var(--text-2);transition:all .25s;background:var(--surface)}
-.foot-social a:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
+.foot-social a:hover{border-color:var(--primary);color:var(--primary)}
 
-.totop{position:fixed;right:22px;bottom:22px;z-index:40;width:46px;height:46px;border-radius:12px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-size:1rem;opacity:0;transform:translateY(14px);pointer-events:none;transition:all .3s var(--ease);box-shadow:var(--shadow-lg)}
-.totop.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.totop{position:fixed;right:22px;bottom:22px;z-index:40;width:46px;height:46px;border-radius:12px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-size:1rem;border:0;padding:0;font:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s var(--ease);box-shadow:var(--shadow-lg)}
+.totop.show{opacity:1;visibility:visible;transform:translateY(0)}
 
-.lightbox{position:fixed;inset:0;z-index:80;background:rgba(8,11,20,.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px}
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(8,11,20,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px}
 .lightbox.open{display:flex}
-.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;border:1px solid var(--line)}
-.lightbox .x{position:absolute;top:20px;right:24px;font-size:2rem;color:#fff;cursor:pointer;font-family:var(--font-mono)}
+.lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.lightbox img{max-width:92vw;max-height:80vh;border-radius:8px;border:1px solid var(--line)}
+.lightbox figcaption{font-family:var(--font-mono);font-size:.82rem;color:rgba(255,255,255,.72);text-align:center;max-width:90vw}
+.lightbox figcaption .hint{display:block;margin-top:6px;font-size:.7rem;color:rgba(255,255,255,.42)}
+.lightbox .x{position:absolute;top:20px;right:24px;width:46px;height:46px;display:grid;place-items:center;font-size:1.7rem;color:#fff;cursor:pointer;font-family:var(--font-mono);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:0;line-height:1;transition:background .2s,border-color .2s}
+.lightbox .x:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.5)}
+.lightbox .x:focus-visible{outline:2px solid #fff;outline-offset:4px}
 
-[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+html.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 [data-reveal].in{opacity:1;transform:none}
+
+/* Lift transforms only where a real pointer can hover (avoids stuck transforms on touch) */
+@media(hover:hover){
+  .btn-primary:hover{transform:translateY(-2px)}
+  .card:hover{transform:translateY(-5px)}
+  .cert:hover{transform:translateY(-4px)}
+  .channel:hover{transform:translateX(4px)}
+  .foot-social a:hover{transform:translateY(-3px)}
+}
+/* Press feedback */
+.btn:active{transform:translateY(0) scale(.98)}
+.card:active{transform:scale(.99)}
+.cert:active{transform:scale(.99)}
+.channel:active{transform:translateX(2px)}
+.foot-social a:active{transform:scale(.95)}
+
+/* Certifications grid responsiveness (scoped, no inline override) */
+#certs .cols-2{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1024px){#certs .cols-2{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){#certs .cols-2{grid-template-columns:1fr}}
 
 @media(max-width:900px){
   .nav-links{display:none}
@@ -292,8 +376,10 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 </head>
 <body>
 
+<a class="skip-link" href="#top">Skip to content</a>
+
 <!-- ===================== NAV ===================== -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Primary">
   <div class="nav-inner">
     <a class="brand" href="#top">
       <span class="dot"></span>
@@ -307,17 +393,17 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
       <a href="#skills">skills</a>
       <a class="nav-cta" href="#contact">get in touch</a>
     </div>
-    <button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark mode"><i class="theme-ico fas fa-moon"></i></button>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false" aria-label="Switch to dark theme"><i class="theme-ico fas fa-moon" aria-hidden="true"></i></button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i class="fas fa-bars" aria-hidden="true"></i></button>
   </div>
 </nav>
 
 <!-- mobile drawer -->
-<div class="drawer" id="drawer">
+<nav class="drawer" id="drawer" aria-label="Mobile" aria-hidden="true" inert>
   <div class="drawer-top">
     <span class="brand"><span class="dot"></span>Omar Hamed</span>
-    <button class="theme-btn" id="themeBtnM" aria-label="Toggle theme" style="margin-left:0"><i class="theme-ico fas fa-moon"></i></button>
-    <button class="menu-btn" id="closeBtn" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    <button class="theme-btn" id="themeBtnM" type="button" aria-pressed="false" aria-label="Switch to dark theme" style="margin-left:0"><i class="theme-ico fas fa-moon" aria-hidden="true"></i></button>
+    <button class="menu-btn" id="closeBtn" type="button" aria-label="Close menu"><i class="fas fa-times" aria-hidden="true"></i></button>
   </div>
   <a href="#about"><span class="ix">01</span>about</a>
   <a href="#experience"><span class="ix">02</span>experience</a>
@@ -325,7 +411,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
   <a href="#certs"><span class="ix">04</span>certifications</a>
   <a href="#skills"><span class="ix">05</span>skills</a>
   <a href="#contact"><span class="ix">06</span>contact</a>
-</div>
+</nav>
 
 <main id="top">
 
@@ -339,18 +425,22 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
         <p class="hero-role">AI Engineer<span class="sep">/</span>Data Scientist<span class="sep">/</span>Power BI Specialist</p>
         <p class="hero-desc">I build real-world AI systems — from computer-vision pipelines and RAG-powered LLM apps to production data workflows and Power BI dashboards. Turning messy data into things that actually ship.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#projects"><i class="fas fa-cube"></i> View projects</a>
-          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1hk2Gzr6goUIx_WBEQMapuj8daq5Grw0S/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> Download CV</a>
+          <a class="btn btn-primary" href="#projects"><i class="fas fa-cube" aria-hidden="true"></i> View projects</a>
+          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1hk2Gzr6goUIx_WBEQMapuj8daq5Grw0S/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Download CV</a>
         </div>
         <div class="metrics">
           <div class="metric"><div class="n">3.59<span style="color:var(--muted);font-size:1rem">/4</span></div><div class="l">GPA · AI degree</div></div>
-          <div class="metric"><div class="n">13+</div><div class="l">Projects shipped</div></div>
+          <div class="metric"><div class="n">13+</div><div class="l">Projects built</div></div>
           <div class="metric"><div class="n">6</div><div class="l">Certifications</div></div>
         </div>
       </div>
       <div class="shot">
         <span class="tag">omar_hamed.jpg</span>
-        <img src="photos/me.jpg" alt="Omar Hamed Ali" />
+        <picture>
+          <source type="image/avif" srcset="photos/me-680.avif" />
+          <source type="image/webp" srcset="photos/me-680.webp" />
+          <img src="photos/me-680.jpg" alt="Omar Hamed Ali, AI Engineer" width="680" height="850" fetchpriority="high" decoding="async" />
+        </picture>
         <div class="frame"></div>
         <span class="corner-tr"></span><span class="corner-bl"></span>
         <span class="scan"></span>
@@ -360,11 +450,11 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 </header>
 
 <!-- ===================== ABOUT ===================== -->
-<section class="section" id="about">
+<section class="section" id="about" aria-labelledby="about-h">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <span class="eyebrow">about</span>
-      <h2 class="section-title">Engineer first, analyst always</h2>
+      <h2 class="section-title" id="about-h">Engineer first, analyst always</h2>
     </div>
     <div class="about-grid">
       <div data-reveal>
@@ -384,11 +474,11 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 </section>
 
 <!-- ===================== EXPERIENCE ===================== -->
-<section class="section" id="experience" style="background:var(--bg-2)">
+<section class="section" id="experience" aria-labelledby="experience-h" style="background:var(--bg-2)">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <span class="eyebrow">experience</span>
-      <h2 class="section-title">Where I've worked</h2>
+      <h2 class="section-title" id="experience-h">Where I've worked</h2>
       <p class="section-sub">A track record across AI engineering, systems development, and data analysis — from internships to leading teams.</p>
     </div>
     <div class="timeline">
@@ -404,7 +494,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
       <div class="tl-item now" data-reveal>
         <div class="tl-date">MAR 2026 — PRESENT</div>
         <div class="tl-role">Information Technology Specialist</div>
-        <div class="tl-org">Institute of Sales Excellence (ISE) <span class="loc">· Menofia · Hybrid</span></div>
+        <div class="tl-org">Institute of Sales Excellence (ISE) <span class="loc">· Menoufia · Hybrid</span></div>
         <ul class="tl-pts">
           <li>Manage and support IT systems and technical infrastructure for reliable day-to-day operations.</li>
           <li>Deliver technical solutions and troubleshooting across software, tools, and internal workflows.</li>
@@ -413,7 +503,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
       <div class="tl-item" data-reveal>
         <div class="tl-date">SEP 2025 — JUN 2026</div>
         <div class="tl-role">L&amp;D Manager &amp; AI Engineer</div>
-        <div class="tl-org">Paths4 AI <span class="loc">· Menofia · Hybrid</span></div>
+        <div class="tl-org">Paths4 AI <span class="loc">· Menoufia · Hybrid</span></div>
         <ul class="tl-pts">
           <li>Built and deployed AI-powered solutions using LLMs and modern AI tools.</li>
           <li>Designed and delivered practical AI training programs, simplifying complex topics through hands-on demos.</li>
@@ -422,7 +512,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
       <div class="tl-item" data-reveal>
         <div class="tl-date">JUL 2025 — APR 2026</div>
         <div class="tl-role">Business Development Intern</div>
-        <div class="tl-org">Business Development Institute (BDI) <span class="loc">· Shebin El Kom · On-site</span></div>
+        <div class="tl-org">Business Development Institute (BDI) <span class="loc">· Shebin El-Kom · On-site</span></div>
         <ul class="tl-pts">
           <li>Worked with the AI team on data-driven solutions and cleaned, enriched business datasets.</li>
         </ul>
@@ -430,7 +520,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
       <div class="tl-item" data-reveal>
         <div class="tl-date">OCT 2024 — SEP 2025</div>
         <div class="tl-role">Co-Lead, Data Analysis Team</div>
-        <div class="tl-org">PIE &amp; AI: Shebeen El-Kom <span class="loc">· Menofia · Hybrid</span></div>
+        <div class="tl-org">PIE &amp; AI: Shebeen El-Kom <span class="loc">· Menoufia · Hybrid</span></div>
         <ul class="tl-pts">
           <li>Led data-analysis initiatives and quality-validation reviews across shared datasets.</li>
           <li>Mentored junior analysts on Excel, Power BI, and analysis tools; automated reporting with Python &amp; DAX.</li>
@@ -449,192 +539,192 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 </section>
 
 <!-- ===================== PROJECTS ===================== -->
-<section class="section" id="projects">
+<section class="section" id="projects" aria-labelledby="projects-h">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <span class="eyebrow">projects</span>
-      <h2 class="section-title">Things I've built</h2>
+      <h2 class="section-title" id="projects-h">Things I've built</h2>
       <p class="section-sub">Selected work across AI/ML engineering and data &amp; BI. Click any dashboard to inspect it full-size.</p>
     </div>
 
     <!-- AI / ML group -->
-    <p class="proj-group-label" data-reveal><i class="fas fa-brain"></i> AI / ML Engineering</p>
+    <p class="proj-group-label" data-reveal><i class="fas fa-brain" aria-hidden="true"></i> AI / ML Engineering</p>
     <div class="grid cols-2" style="margin-bottom:46px">
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fas fa-video"></i></div>
+        <div class="card-ico"><i class="fas fa-video" aria-hidden="true"></i></div>
         <h3>AI-Powered Security Monitoring</h3>
         <p>Real-time video pipeline that detects, classifies, and tracks subjects across frames with YOLOv8 — Dockerized for edge deployment with live Telegram alerting.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">YOLOv8</span><span class="tag">Docker</span><span class="tag">Telegram API</span></div>
       </div>
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fas fa-comments"></i></div>
+        <div class="card-ico"><i class="fas fa-comments" aria-hidden="true"></i></div>
         <h3>RAG-Powered Educational Chatbot API</h3>
         <p>A chatbot API leveraging Retrieval-Augmented Generation for Egyptian educational content, with intelligent query processing for contextual, accurate responses.</p>
         <div class="tags"><span class="tag">TypeScript</span><span class="tag">RAG</span><span class="tag">REST API</span><span class="tag">LLMs</span></div>
       </div>
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fas fa-id-badge"></i></div>
+        <div class="card-ico"><i class="fas fa-id-badge" aria-hidden="true"></i></div>
         <h3>CareerCraft — AI Career Platform</h3>
         <p>Full-stack Flask app using the Gemini API to optimize CVs, match job descriptions, and simulate interviews — with a responsive UI and dynamic PDF reports.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Gemini API</span></div>
       </div>
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fas fa-robot"></i></div>
+        <div class="card-ico"><i class="fas fa-robot" aria-hidden="true"></i></div>
         <h3>Najeeb Chatbot — NLP</h3>
         <p>An NLP chatbot with web-scraping and preprocessing pipelines, using tokenization and NER for context-aware query handling.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">NLTK</span><span class="tag">SpaCy</span><span class="tag">NER</span></div>
       </div>
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fas fa-microscope"></i></div>
+        <div class="card-ico"><i class="fas fa-microscope" aria-hidden="true"></i></div>
         <h3>SkinCancerCNN</h3>
         <p>A CNN for skin-lesion classification with data augmentation and preprocessing, plus a GUI to support medical professionals in diagnosis.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Tkinter</span><span class="tag">CNN</span></div>
       </div>
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fab fa-github"></i></div>
+        <div class="card-ico"><i class="fab fa-github" aria-hidden="true"></i></div>
         <h3>Data Processing &amp; ML GUI</h3>
         <p>A Tkinter GUI application for data processing and machine learning, built with an OOP structure integrating Pandas, Scikit-learn, and NumPy.</p>
         <div class="tags"><span class="tag">Tkinter</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">NumPy</span></div>
-        <a class="proj-link" href="https://github.com/omarhamed888/2ndYearMLproject" target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://github.com/omarhamed888/2ndYearMLproject" target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
 
     <!-- Data & BI group -->
-    <p class="proj-group-label" data-reveal><i class="fas fa-chart-column"></i> Data &amp; BI Dashboards</p>
+    <p class="proj-group-label" data-reveal><i class="fas fa-chart-column" aria-hidden="true"></i> Data &amp; BI Dashboards</p>
     <div class="grid cols-2">
       <div class="card span-2" data-reveal>
         <h3>HR Analytics Dashboard</h3>
         <p>Analysis of employee attrition, promotion trends, and workforce demographics with interactive Power BI visualizations.</p>
         <div class="shots two">
-          <div class="imgbox"><img src="photos/HR1.jpg" alt="HR Analytics Dashboard — attrition trends" loading="lazy" /></div>
-          <div class="imgbox"><img src="photos/HR2.jpg" alt="Promotion trends visualization" loading="lazy" /></div>
+          <div class="imgbox"><img src="photos/HR1.jpg" alt="HR Analytics Dashboard — attrition trends" loading="lazy" decoding="async" /></div>
+          <div class="imgbox"><img src="photos/HR2.jpg" alt="Promotion trends visualization" loading="lazy" decoding="async" /></div>
         </div>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">HR Analytics</span><span class="tag">Data Modeling</span></div>
-        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_hranalytics-datavisualization-powerbi-activity-7233809646593949696-OSej?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_hranalytics-datavisualization-powerbi-activity-7233809646593949696-OSej?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> View on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="card span-2" data-reveal>
         <h3>Pakistan E-commerce Dashboard</h3>
         <p>Analysis of customer trends, top products, sales impact, and payment methods using Power BI.</p>
         <div class="shots two">
-          <div class="imgbox"><img src="photos/Pea_project1.png" alt="Customer and product analysis" loading="lazy" /></div>
-          <div class="imgbox"><img src="photos/Pea_project2.png" alt="Sales and payment trends" loading="lazy" /></div>
+          <div class="imgbox"><picture><source srcset="photos/Pea_project1.webp" type="image/webp" /><img src="photos/Pea_project1.png" alt="Customer and product analysis" loading="lazy" decoding="async" /></picture></div>
+          <div class="imgbox"><picture><source srcset="photos/Pea_project2.webp" type="image/webp" /><img src="photos/Pea_project2.png" alt="Sales and payment trends" loading="lazy" decoding="async" /></picture></div>
         </div>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">E-commerce</span><span class="tag">Sales Analysis</span></div>
-        <a class="proj-link" href="https://drive.google.com/file/d/1YMOFHe_s5OQrY3NMTAcL6dbiPPmvb6pl/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-up-right-from-square"></i> View dashboard <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://drive.google.com/file/d/1YMOFHe_s5OQrY3NMTAcL6dbiPPmvb6pl/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-up-right-from-square" aria-hidden="true"></i> View dashboard <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="card span-2" data-reveal>
         <h3>Interactive Sales Dashboard</h3>
         <p>End-to-end sales analytics with KPI tracking and geographical breakdowns, modeled and visualized in Power BI.</p>
         <div class="shots two">
-          <div class="imgbox"><img src="photos/sales11.jpg" alt="Sales overview dashboard" loading="lazy" /></div>
-          <div class="imgbox"><img src="photos/sales12.jpg" alt="Geographical sales breakdown" loading="lazy" /></div>
+          <div class="imgbox"><img src="photos/sales11.jpg" alt="Sales overview dashboard" loading="lazy" decoding="async" /></div>
+          <div class="imgbox"><img src="photos/sales12.jpg" alt="Geographical sales breakdown" loading="lazy" decoding="async" /></div>
         </div>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">KPI Tracking</span><span class="tag">Sales Analytics</span></div>
-        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-fVV-?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_dataanalytics-powerbi-datavisualization-activity-7232409441193611266-fVV-?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> View on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="card" data-reveal>
         <h3>Customer Churn Analysis</h3>
         <p>Churn dashboard tracking risk metrics, demographic distributions, and financial trends in Power BI.</p>
-        <div class="shots"><div class="imgbox"><img src="photos/m1.jpg" alt="Churn dashboard — key metrics" loading="lazy" /></div></div>
+        <div class="shots"><div class="imgbox"><img src="photos/m1.jpg" alt="Churn dashboard — key metrics" loading="lazy" decoding="async" /></div></div>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Customer Analytics</span></div>
-        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> View on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="card" data-reveal>
         <h3>E-Commerce Sales Dashboard</h3>
         <p>Sales analytics tracking $227K+ in profit, customer segmentation, and regional performance across categories.</p>
-        <div class="shots"><div class="imgbox"><img src="photos/m2.jpg" alt="E-commerce dashboard — sales metrics" loading="lazy" /></div></div>
+        <div class="shots"><div class="imgbox"><img src="photos/m2.jpg" alt="E-commerce dashboard — sales metrics" loading="lazy" decoding="async" /></div></div>
         <div class="tags"><span class="tag">Excel</span><span class="tag">DAX</span><span class="tag">Segmentation</span><span class="tag">Data Modeling</span></div>
-        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_excel-dataabranalysis-activity-7228308384607793152-aUgm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_excel-dataabranalysis-activity-7228308384607793152-aUgm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> View on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="card" data-reveal>
         <h3>Workforce HR Dashboard</h3>
         <p>HR metrics covering gender distribution, turnover, promotion trends, and regional workforce breakdowns in Power BI.</p>
-        <div class="shots"><div class="imgbox"><img src="photos/m4.jpeg" alt="HR dashboard — gender distribution" loading="lazy" /></div></div>
+        <div class="shots"><div class="imgbox"><img src="photos/m4.jpeg" alt="HR dashboard — gender distribution" loading="lazy" decoding="async" /></div></div>
         <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">HR Analytics</span></div>
-        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View on LinkedIn <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://www.linkedin.com/posts/omar-hamed2410_powerbi-datavisualization-analytics-activity-7240636829274656768-vqjF?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> View on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="card" data-reveal>
-        <div class="card-ico"><i class="fab fa-github"></i></div>
+        <div class="card-ico"><i class="fab fa-github" aria-hidden="true"></i></div>
         <h3>Electric Cars Analysis</h3>
         <p>Statistical analysis of EV market data with Python — data preprocessing and visualization using Pandas, NumPy, and Matplotlib.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span></div>
-        <a class="proj-link" href="https://github.com/omarhamed888/electric-cars-project" target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+        <a class="proj-link" href="https://github.com/omarhamed888/electric-cars-project" target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===================== CERTIFICATIONS ===================== -->
-<section class="section" id="certs" style="background:var(--bg-2)">
+<section class="section" id="certs" aria-labelledby="certs-h" style="background:var(--bg-2)">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <span class="eyebrow">certifications</span>
-      <h2 class="section-title">Verified credentials</h2>
+      <h2 class="section-title" id="certs-h">Verified credentials</h2>
     </div>
-    <div class="grid cols-2" style="grid-template-columns:repeat(3,1fr)">
+    <div class="grid cols-2">
 
       <div class="cert" data-reveal>
-        <div class="cert-img"><img src="photos/python_for_everybody.png" alt="Python Programming Professional Certificate" loading="lazy" /></div>
+        <div class="cert-img"><picture><source srcset="photos/python_for_everybody.webp" type="image/webp" /><img src="photos/python_for_everybody.png" alt="Python Programming Professional Certificate" loading="lazy" decoding="async" /></picture></div>
         <h3>Python Programming Professional Certificate</h3>
-        <div class="cert-meta"><i class="fas fa-university"></i> University of Michigan</div>
-        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">Jul 2024 · Lifetime</span></div>
+        <div class="cert-meta"><i class="fas fa-university" aria-hidden="true"></i> University of Michigan</div>
+        <div class="cert-meta"><i class="fas fa-calendar" aria-hidden="true"></i> <span class="mono">Jul 2024 · Lifetime</span></div>
         <div class="cert-tags"><span class="tag">Python</span><span class="tag">Data Structures</span><span class="tag">Web Scraping</span></div>
-        <a class="verify" href="https://coursera.org/share/1b084d69556f3f4ac0d74d5590cc5c35" target="_blank" rel="noopener">Verify · Coursera <i class="fas fa-arrow-right"></i></a>
+        <a class="verify" href="https://coursera.org/share/1b084d69556f3f4ac0d74d5590cc5c35" target="_blank" rel="noopener">Verify · Coursera <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="cert" data-reveal>
-        <div class="cert-img"><img src="photos/HCIA.jpg" alt="HCIA-AI V3.5 Certificate" loading="lazy" /></div>
+        <div class="cert-img"><img src="photos/HCIA.jpg" alt="HCIA-AI V3.5 Certificate" loading="lazy" decoding="async" /></div>
         <h3>HCIA-AI V3.5</h3>
-        <div class="cert-meta"><i class="fas fa-university"></i> Huawei Talent Online</div>
-        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">Feb 2025 · Lifetime</span></div>
+        <div class="cert-meta"><i class="fas fa-university" aria-hidden="true"></i> Huawei Talent Online</div>
+        <div class="cert-meta"><i class="fas fa-calendar" aria-hidden="true"></i> <span class="mono">Feb 2025 · Lifetime</span></div>
         <div class="cert-tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">AI Fundamentals</span></div>
-        <a class="verify" href="https://drive.google.com/file/d/1sUjR06gU1Vqnc6ZkVsyWN4AbHvsHl8ID/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+        <a class="verify" href="https://drive.google.com/file/d/1sUjR06gU1Vqnc6ZkVsyWN4AbHvsHl8ID/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="cert" data-reveal>
-        <div class="cert-img"><img src="photos/nti_AI.jpg" alt="NTI/Huawei AI Track Certificate" loading="lazy" /></div>
+        <div class="cert-img"><img src="photos/nti_AI.jpg" alt="NTI/Huawei AI Track Certificate" loading="lazy" decoding="async" /></div>
         <h3>NTI / Huawei AI Track</h3>
-        <div class="cert-meta"><i class="fas fa-building"></i> NTI &amp; Huawei Talent Academy</div>
-        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">Feb 2025 · Lifetime</span></div>
+        <div class="cert-meta"><i class="fas fa-building" aria-hidden="true"></i> NTI &amp; Huawei Talent Academy</div>
+        <div class="cert-meta"><i class="fas fa-calendar" aria-hidden="true"></i> <span class="mono">Feb 2025 · Lifetime</span></div>
         <div class="cert-tags"><span class="tag">Artificial Intelligence</span><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span></div>
-        <a class="verify" href="https://www.linkedin.com/posts/omar-hamed2410_artificialintelligence-machinelearning-deeplearning-activity-7339724697728614400-Bsw3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+        <a class="verify" href="https://www.linkedin.com/posts/omar-hamed2410_artificialintelligence-machinelearning-deeplearning-activity-7339724697728614400-Bsw3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5H7BgBd4m2rAcEP67CIIGH4yVCSzlwp4Q" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="cert" data-reveal>
-        <div class="cert-img"><img src="photos/nti_data_analisis.png" alt="Digital Egypt Data Analysis Certificate" loading="lazy" /></div>
+        <div class="cert-img"><picture><source srcset="photos/nti_data_analisis.webp" type="image/webp" /><img src="photos/nti_data_analisis.png" alt="Digital Egypt Data Analysis Certificate" loading="lazy" decoding="async" /></picture></div>
         <h3>Data Analysis: Skills for the Freelance Professional</h3>
-        <div class="cert-meta"><i class="fas fa-university"></i> Ministry of Communications &amp; IT</div>
-        <div class="cert-meta"><i class="fas fa-certificate"></i> <span class="mono">Digital Egypt · ID 108353</span></div>
+        <div class="cert-meta"><i class="fas fa-university" aria-hidden="true"></i> Ministry of Communications &amp; IT</div>
+        <div class="cert-meta"><i class="fas fa-certificate" aria-hidden="true"></i> <span class="mono">Digital Egypt · ID 108353</span></div>
         <div class="cert-stats">
           <div class="cert-stat"><div class="n">90</div><div class="l">Tech hrs</div></div>
           <div class="cert-stat"><div class="n">30</div><div class="l">Freelance hrs</div></div>
           <div class="cert-stat full"><div class="n">100%</div><div class="l">Final score</div></div>
         </div>
-        <a class="verify" href="https://drive.google.com/file/d/1wvA3MgyVy-QgxK8tdbBEUR9rLGDxMpno/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+        <a class="verify" href="https://drive.google.com/file/d/1wvA3MgyVy-QgxK8tdbBEUR9rLGDxMpno/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="cert" data-reveal>
-        <div class="cert-img"><img src="photos/Pea_certificate.png" alt="PeaLearning Data Analysis Certificate" loading="lazy" /></div>
+        <div class="cert-img"><picture><source srcset="photos/Pea_certificate.webp" type="image/webp" /><img src="photos/Pea_certificate.png" alt="PeaLearning Data Analysis Certificate" loading="lazy" decoding="async" /></picture></div>
         <h3>Completion Certificate — Data Analysis</h3>
-        <div class="cert-meta"><i class="fas fa-building"></i> PeaLearning &amp; Education Canada</div>
-        <div class="cert-meta"><i class="fas fa-flask"></i> <span class="mono">Jun 2025 · Practical training</span></div>
+        <div class="cert-meta"><i class="fas fa-building" aria-hidden="true"></i> PeaLearning &amp; Education Canada</div>
+        <div class="cert-meta"><i class="fas fa-flask" aria-hidden="true"></i> <span class="mono">Jun 2025 · Practical training</span></div>
         <div class="cert-tags"><span class="tag">Data Analysis</span><span class="tag">Excel</span><span class="tag">Power BI</span></div>
-        <a class="verify" href="https://drive.google.com/file/d/1Wd3dyuWEUDQhJR75kF6TZvdk9xMm-tvx/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right"></i></a>
+        <a class="verify" href="https://drive.google.com/file/d/1Wd3dyuWEUDQhJR75kF6TZvdk9xMm-tvx/view?usp=sharing" target="_blank" rel="noopener">Verify <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="cert" data-reveal>
-        <div class="cert-img"><img src="photos/one_milion_ai.png" alt="1 Million AI Prompters Certificate" loading="lazy" /></div>
+        <div class="cert-img"><picture><source srcset="photos/one_milion_ai.webp" type="image/webp" /><img src="photos/one_milion_ai.png" alt="1 Million AI Prompters Certificate" loading="lazy" decoding="async" /></picture></div>
         <h3>1 Million AI Prompters</h3>
-        <div class="cert-meta"><i class="fas fa-building"></i> Dubai Centre for Artificial Intelligence</div>
-        <div class="cert-meta"><i class="fas fa-calendar"></i> <span class="mono">2024 · Lifetime</span></div>
+        <div class="cert-meta"><i class="fas fa-building" aria-hidden="true"></i> Dubai Centre for Artificial Intelligence</div>
+        <div class="cert-meta"><i class="fas fa-calendar" aria-hidden="true"></i> <span class="mono">2024 · Lifetime</span></div>
         <div class="cert-tags"><span class="tag">Prompt Engineering</span><span class="tag">AI</span><span class="tag">Future Skills</span></div>
-        <a class="verify" href="https://omp.dub.ai/certificate/irHwnTMMuCNw" target="_blank" rel="noopener">Verify · Dubai AI <i class="fas fa-arrow-right"></i></a>
+        <a class="verify" href="https://omp.dub.ai/certificate/irHwnTMMuCNw" target="_blank" rel="noopener">Verify · Dubai AI <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
 
     </div>
@@ -642,35 +732,35 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 </section>
 
 <!-- ===================== SKILLS ===================== -->
-<section class="section" id="skills">
+<section class="section" id="skills" aria-labelledby="skills-h">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <span class="eyebrow">skills</span>
-      <h2 class="section-title">Toolbox</h2>
+      <h2 class="section-title" id="skills-h">Toolbox</h2>
     </div>
     <div class="skill-grid">
       <div class="skill-block" data-reveal>
-        <h4><i class="fas fa-code"></i> Programming</h4>
+        <h4><i class="fas fa-code" aria-hidden="true"></i> Programming</h4>
         <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span></div>
       </div>
       <div class="skill-block" data-reveal>
-        <h4><i class="fas fa-brain"></i> AI / ML</h4>
+        <h4><i class="fas fa-brain" aria-hidden="true"></i> AI / ML</h4>
         <div class="chips"><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">NLP &amp; LLMs</span><span class="chip">Computer Vision</span><span class="chip">RAG</span><span class="chip">Prompt Engineering</span><span class="chip">Model Deployment</span></div>
       </div>
       <div class="skill-block" data-reveal>
-        <h4><i class="fas fa-layer-group"></i> Libraries &amp; Frameworks</h4>
+        <h4><i class="fas fa-layer-group" aria-hidden="true"></i> Libraries &amp; Frameworks</h4>
         <div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">OpenCV</span><span class="chip">YOLOv8</span><span class="chip">TensorFlow</span><span class="chip">NLTK</span><span class="chip">SpaCy</span><span class="chip">Flask</span></div>
       </div>
       <div class="skill-block" data-reveal>
-        <h4><i class="fas fa-chart-pie"></i> Data &amp; BI</h4>
+        <h4><i class="fas fa-chart-pie" aria-hidden="true"></i> Data &amp; BI</h4>
         <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Data Modeling</span><span class="chip">Excel</span><span class="chip">EDA</span><span class="chip">Data Cleaning</span><span class="chip">Matplotlib</span></div>
       </div>
       <div class="skill-block" data-reveal>
-        <h4><i class="fas fa-screwdriver-wrench"></i> Tools &amp; Infra</h4>
+        <h4><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> Tools &amp; Infra</h4>
         <div class="chips"><span class="chip">Git &amp; GitHub</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">REST APIs</span><span class="chip">JSON</span><span class="chip">Jupyter</span></div>
       </div>
       <div class="skill-block" data-reveal>
-        <h4><i class="fas fa-database"></i> Big Data</h4>
+        <h4><i class="fas fa-database" aria-hidden="true"></i> Big Data</h4>
         <div class="chips"><span class="chip">HDFS</span><span class="chip">Hive</span><span class="chip">Hadoop</span><span class="chip">Distributed Processing</span></div>
       </div>
     </div>
@@ -678,25 +768,25 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
 </section>
 
 <!-- ===================== CONTACT ===================== -->
-<section class="section" id="contact">
+<section class="section" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
     <div class="contact-card" data-reveal>
       <div class="contact-grid">
         <div>
           <span class="eyebrow">contact</span>
-          <h2 class="contact-h">Let's build<br><span class="accent">something</span> together</h2>
+          <h2 class="contact-h" id="contact-h">Let's build<br><span class="accent">something</span> together</h2>
           <p class="contact-p">Open to AI engineering, data science, and analytics opportunities — remote or on-site. The fastest way to reach me is email or WhatsApp.</p>
           <div class="hero-cta" style="margin-bottom:0">
-            <a class="btn btn-primary" href="mailto:omar.hamed2410@gmail.com"><i class="fas fa-envelope"></i> Email me</a>
-            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1Gx8zapGImyJv3wmRbonZO_F1Gg_3fFEy/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down"></i> My CV</a>
+            <a class="btn btn-primary" href="mailto:omar.hamed2410@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email me</a>
+            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1hk2Gzr6goUIx_WBEQMapuj8daq5Grw0S/view?usp=sharing" target="_blank" rel="noopener"><i class="fas fa-file-arrow-down" aria-hidden="true"></i> My CV</a>
           </div>
         </div>
         <div class="channels">
-          <a class="channel" href="mailto:omar.hamed2410@gmail.com"><i class="fas fa-envelope"></i><div><div class="ct">Email</div><div class="cv">omar.hamed2410@gmail.com</div></div></a>
-          <a class="channel" href="tel:+201017045285"><i class="fas fa-phone"></i><div><div class="ct">Phone</div><div class="cv">+20 101 704 5285</div></div></a>
-          <a class="channel" href="https://wa.me/+201017045285" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><div><div class="ct">WhatsApp</div><div class="cv">Message me</div></div></a>
-          <a class="channel" href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i><div><div class="ct">LinkedIn</div><div class="cv">in/omar-hamed</div></div></a>
-          <a class="channel" href="https://github.com/omarhamed888" target="_blank" rel="noopener"><i class="fab fa-github"></i><div><div class="ct">GitHub</div><div class="cv">omarhamed888</div></div></a>
+          <a class="channel" href="mailto:omar.hamed2410@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i><div><div class="ct">Email</div><div class="cv">omar.hamed2410@gmail.com</div></div></a>
+          <a class="channel" href="tel:+201017045285"><i class="fas fa-phone" aria-hidden="true"></i><div><div class="ct">Phone</div><div class="cv">+20 101 704 5285</div></div></a>
+          <a class="channel" href="https://wa.me/201017045285" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><div><div class="ct">WhatsApp</div><div class="cv">Message me</div></div></a>
+          <a class="channel" href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i><div><div class="ct">LinkedIn</div><div class="cv">in/omar-hamed</div></div></a>
+          <a class="channel" href="https://github.com/omarhamed888" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i><div><div class="ct">GitHub</div><div class="cv">omarhamed888</div></div></a>
         </div>
       </div>
     </div>
@@ -709,103 +799,164 @@ footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
   <div class="wrap foot">
     <div>© <span id="year"></span> Omar Hamed Ali · built in Cairo</div>
     <div class="foot-social">
-      <a href="https://github.com/omarhamed888" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://wa.me/+201017045285" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="mailto:omar.hamed2410@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/omarhamed888" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a href="https://www.linkedin.com/in/omar-hamed-020b28251/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+      <a href="https://wa.me/201017045285" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+      <a href="mailto:omar.hamed2410@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
     </div>
   </div>
 </footer>
 
-<div class="totop" id="totop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></div>
+<button class="totop" id="totop" type="button" aria-label="Scroll to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
 
-<div class="lightbox" id="lightbox">
-  <span class="x" id="lbClose">&times;</span>
-  <img id="lbImg" src="" alt="Expanded view" />
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="x" id="lbClose" type="button" aria-label="Close image viewer">&times;</button>
+  <figure>
+    <img id="lbImg" src="" alt="" />
+    <figcaption id="lbCap"></figcaption>
+  </figure>
 </div>
 
 <script>
 (function(){
-  // ---------- THEME (light default + dark toggle, persisted) ----------
+  // ---------- THEME (set pre-paint in <head>; here we wire toggles) ----------
   var THEME_KEY='oh_theme';
   function store(v){try{localStorage.setItem(THEME_KEY,v);}catch(e){}}
   function read(){try{return localStorage.getItem(THEME_KEY);}catch(e){return null;}}
+  function prefersDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}
+  var themeBtns=[document.getElementById('themeBtn'),document.getElementById('themeBtnM')].filter(Boolean);
   function setIcons(t){
     var cls='theme-ico fas '+(t==='dark'?'fa-sun':'fa-moon');
     document.querySelectorAll('.theme-ico').forEach(function(i){i.className=cls;});
+    themeBtns.forEach(function(b){
+      b.setAttribute('aria-pressed',t==='dark'?'true':'false');
+      b.setAttribute('aria-label',t==='dark'?'Switch to light theme':'Switch to dark theme');
+    });
   }
-  function apply(t){document.documentElement.setAttribute('data-theme',t);setIcons(t);
-    var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#0B0E1A':'#3D5AF1');}
-  var initial=read()||'light';
+  function apply(t){
+    document.documentElement.setAttribute('data-theme',t);setIcons(t);
+    var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#0B0E1A':'#FAFBFF');
+  }
+  var initial=document.documentElement.getAttribute('data-theme')||read()||(prefersDark()?'dark':'light');
   apply(initial);
   function toggle(){var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';apply(cur);store(cur);}
-  var tb=document.getElementById('themeBtn'),tbm=document.getElementById('themeBtnM');
-  if(tb)tb.addEventListener('click',toggle);
-  if(tbm)tbm.addEventListener('click',toggle);
+  themeBtns.forEach(function(b){b.addEventListener('click',toggle);});
 
   var nav=document.getElementById('nav');
   var drawer=document.getElementById('drawer');
   var menuBtn=document.getElementById('menuBtn');
   var closeBtn=document.getElementById('closeBtn');
   var totop=document.getElementById('totop');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // nav background on scroll + scroll-to-top visibility
   function onScroll(){
-    if(window.scrollY>30) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-    if(window.scrollY>500) totop.classList.add('show'); else totop.classList.remove('show');
+    if(nav){ if(window.scrollY>30) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+    if(totop){ if(window.scrollY>500) totop.classList.add('show'); else totop.classList.remove('show'); }
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
-  // mobile drawer
-  function openDrawer(){drawer.classList.add('open');document.body.style.overflow='hidden';}
-  function closeDrawer(){drawer.classList.remove('open');document.body.style.overflow='';}
-  menuBtn.addEventListener('click',openDrawer);
-  closeBtn.addEventListener('click',closeDrawer);
-  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeDrawer);});
+  // mobile drawer (accessible modal: inert + focus management)
+  function openDrawer(){
+    if(!drawer)return;
+    drawer.classList.add('open');drawer.removeAttribute('inert');drawer.setAttribute('aria-hidden','false');
+    if(menuBtn)menuBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+    if(closeBtn)closeBtn.focus();
+  }
+  function closeDrawer(){
+    if(!drawer||!drawer.classList.contains('open'))return;
+    drawer.classList.remove('open');drawer.setAttribute('inert','');drawer.setAttribute('aria-hidden','true');
+    if(menuBtn)menuBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+    if(menuBtn)menuBtn.focus();
+  }
+  if(menuBtn)menuBtn.addEventListener('click',openDrawer);
+  if(closeBtn)closeBtn.addEventListener('click',closeDrawer);
+  if(drawer)drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeDrawer);});
 
-  // scroll to top
-  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  // scroll to top (honors reduced-motion)
+  if(totop)totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
 
-  // active nav link via IntersectionObserver
-  var sections=document.querySelectorAll('main section[id], header[id]');
+  // active nav link + reveal on scroll
   var navMap={};
   document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(a){navMap[a.getAttribute('href').slice(1)]=a;});
-  var navObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        Object.values(navMap).forEach(function(a){a.classList.remove('active');});
-        var id=e.target.getAttribute('id');
-        if(navMap[id]) navMap[id].classList.add('active');
-      }
-    });
-  },{rootMargin:'-45% 0px -50% 0px'});
-  sections.forEach(function(s){navObs.observe(s);});
+  var sections=document.querySelectorAll('main section[id], header[id]');
+  function revealAll(){document.querySelectorAll('[data-reveal]').forEach(function(el){el.classList.add('in');});}
+  if('IntersectionObserver' in window){
+    var navObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          Object.keys(navMap).forEach(function(k){navMap[k].classList.remove('active');});
+          var id=e.target.getAttribute('id');
+          if(navMap[id]) navMap[id].classList.add('active');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){navObs.observe(s);});
 
-  // reveal on scroll
-  var revObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}
-    });
-  },{threshold:0.12});
-  document.querySelectorAll('[data-reveal]').forEach(function(el){revObs.observe(el);});
+    var ioAlive=false;
+    var revObs=new IntersectionObserver(function(entries){
+      ioAlive=true;
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el=e.target,i=0;
+          try{var sib=el.parentElement.querySelectorAll(':scope > [data-reveal]');i=Array.prototype.indexOf.call(sib,el);}catch(_){i=0;}
+          el.style.transitionDelay=(Math.min(i,3)*0.06)+'s';
+          el.classList.add('in');revObs.unobserve(el);
+        }
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('[data-reveal]').forEach(function(el){revObs.observe(el);});
+    // Safety net: if the observer never delivers a callback (broken/throttled IO),
+    // reveal everything so content can never stay permanently invisible.
+    setTimeout(function(){ if(!ioAlive) revealAll(); },3000);
+  } else {
+    // No IntersectionObserver: reveal everything so nothing stays invisible
+    revealAll();
+  }
 
-  // lightbox
-  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbClose=document.getElementById('lbClose');
-  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
-  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}
-  document.querySelectorAll('.imgbox img, .cert-img').forEach(function(el){
-    el.style.cursor='zoom-in';
-    el.addEventListener('click',function(){
-      var img=el.tagName==='IMG'?el:el.querySelector('img');
-      if(img) openLb(img.src,img.alt);
-    });
+  // ---------- LIGHTBOX (accessible modal) ----------
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),
+      lbCap=document.getElementById('lbCap'),lbClose=document.getElementById('lbClose');
+  var lbTrigger=null;
+  var inertSel=['#nav','main','footer'];
+  function setBgInert(on){
+    inertSel.forEach(function(sel){var el=document.querySelector(sel);if(el){if(on)el.setAttribute('inert','');else el.removeAttribute('inert');}});
+  }
+  function openLb(src,alt,trigger){
+    if(!lb)return;
+    lbTrigger=trigger||document.activeElement;
+    lbImg.src=src;lbImg.alt=alt||'';
+    if(lbCap)lbCap.innerHTML=(alt?(''+alt).replace(/[<>&]/g,''):'')+'<span class="hint">Esc or click outside to close</span>';
+    lb.classList.add('open');document.body.style.overflow='hidden';
+    setBgInert(true);
+    if(lbClose)lbClose.focus();
+  }
+  function closeLb(){
+    if(!lb||!lb.classList.contains('open'))return;
+    lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';
+    setBgInert(false);
+    if(lbTrigger&&lbTrigger.focus)lbTrigger.focus();
+    lbTrigger=null;
+  }
+  document.querySelectorAll('.imgbox, .cert-img').forEach(function(box){
+    var img=box.tagName==='IMG'?box:box.querySelector('img');
+    if(!img)return;
+    box.setAttribute('role','button');
+    box.setAttribute('tabindex','0');
+    box.setAttribute('aria-label','View '+(img.alt||'image')+' full size');
+    function go(){openLb(img.currentSrc||img.src,img.alt,box);}
+    box.addEventListener('click',go);
+    box.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
   });
-  lbClose.addEventListener('click',closeLb);
-  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  if(lbClose)lbClose.addEventListener('click',closeLb);
+  if(lb)lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  if(lb)lb.addEventListener('keydown',function(e){if(e.key==='Tab'){e.preventDefault();if(lbClose)lbClose.focus();}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLb();closeDrawer();}});
 
   // footer year
-  document.getElementById('year').textContent=new Date().getFullYear();
+  var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
 })();
 </script>
 </body>

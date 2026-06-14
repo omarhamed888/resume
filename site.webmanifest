@@ -1,0 +1,14 @@
+{
+  "name": "Omar Hamed Ali — AI Engineer & Data Scientist",
+  "short_name": "Omar Hamed",
+  "description": "Portfolio of Omar Hamed Ali — AI Engineer & Data Scientist building real-world AI systems.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#FAFBFF",
+  "theme_color": "#3D5AF1",
+  "icons": [
+    { "src": "photos/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "photos/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
